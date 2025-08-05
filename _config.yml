@@ -3,7 +3,7 @@
 #===========================================================
 
 locale: "ar"
-title: "دفتر الخواطر"
+title: "حِبر شفاف"
 description: "مدونة شخصية للتعبير عن الخواطر، التأملات، ومشاركة الرؤى حول الحياة وتطوير الذات."
 url: "https://djameldidin.github.io"
 baseurl: "/daftar-khawater"
@@ -87,7 +87,7 @@ defaults:
 masthead_links:
   - title: "الرئيسية"
     url: /
-  - title: "دفتر الخواطر"
+  - title: "الخواطر"
     url: /thoughts/
   - title: "مقالات ورؤى"
     url: /articles/
