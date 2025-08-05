@@ -5131,101 +5131,6 @@ a:hover {
   color: #a85b14;
 }
 
-/* ---------- ترويسة (Header) ---------- */
-.site-header {
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #ddd;
-}
-
-/* ---------- قائمة التنقل ---------- */
-.greedy-nav .visible-links a {
-  padding: 10px 15px;
-  font-weight: bold;
-}
-
-/* ---------- تصحيح اتجاه عناصر جانبية ---------- */
-.author__urls {
-  flex-direction: column !important;
-}
-
-/* ---------- العناوين ---------- */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  color: #222;
-}
-
-/* ---------- صناديق المحتوى ---------- */
-.page__content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* ---------- زر العودة للأعلى ---------- */
-.back-to-top {
-  right: auto;
-  left: 20px;
-}
-
-/* ---------- تخصيص التصنيفات ---------- */
-.taxonomy__index a {
-  background: #fafafa;
-  border: 1px solid #ddd;
-  padding: 8px 12px;
-  display: inline-block;
-  border-radius: 6px;
-  margin: 5px;
-}
-
-/* ---------- المقالات في الأرشيف ---------- */
-.archive__item-title {
-  font-size: 1.2rem;
-}
-
-/* ---------- Footer ---------- */
-.page__footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
-
-/* تصحيح تنسيق صفحة التصنيفات */
-.archive h2 {
-  margin-top: 2rem;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 0.5rem;
-  font-size: 1.5rem;
-  text-align: right;
-}
-
-.archive ul {
-  list-style: none;
-  padding: 0;
-}
-
-.archive ul li {
-  margin-bottom: 0.5rem;
-  text-align: right;
-}
-
-.archive ul li a {
-  font-weight: bold;
-  color: #2b6cb0;
-  text-decoration: none;
-}
-
-.archive ul li a:hover {
-  text-decoration: underline;
-}
-
-.archive .post-date {
-  color: #718096;
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
-}
-
 /* تنسيق صفحة الأرشيف */
 .archive {
   text-align: right;
@@ -5240,21 +5145,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .archive ul {
   list-style: none;
-  padding: 0;
-}
-
-.archive ul li {
-  margin-bottom: 0.75rem;
-}
-
-.archive ul li a {
-  font-weight: bold;
-  color: #2b6cb0;
-  text-decoration: none;
-}
-
-.archive ul li a:hover {
-  text-decoration: underline;
+  padding-right: 0; /* تصحيح للغة العربية */
 }
 
 .archive .post-date {
