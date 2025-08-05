@@ -10,10 +10,4 @@ var store = [{
         "tags": ["خواطر شخصية","تأملات"],
         "url": "/hibr-shafaf/thoughts/2025-08-03-first-thought/",
         "teaser": null
-      },{
-        "title": "خاطرة تجريبية",
-        "excerpt":"هذه خاطرة تجريبية.  ","categories": [],
-        "tags": [],
-        "url": "/hibr-shafaf/thoughts/khatera-test/",
-        "teaser": null
       }]
