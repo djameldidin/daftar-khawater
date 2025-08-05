@@ -3,7 +3,7 @@
 #===========================================================
 
 locale: "ar"
-title: "حبر شفاف" # تم التغيير هنا
+title: "حبر شفاف"
 description: "مساحة للكتابة الصادقة، الأفكار الواضحة، والتأملات التي تعبر عن الذات." # تم تغيير الوصف هنا
 url: "https://djameldidin.github.io"
 baseurl: "/hibr-shafaf" 
@@ -23,7 +23,7 @@ minimal_mistakes_skin: "air"
 author:
   name: "عدلي رغدة"
   avatar: "/assets/images/profile.jpg"
-  bio: "أؤمن أن أبسط فكرة يمكنها أن تغيّر نظرتنا للعالم إذا قُدمت في قالب جميل. هنا مساحة للخواطر والتأملات."
+  bio: "أؤمن أن أبسط فكرة يمكنها أن تغيّر نظرتنا للعالم إذا قُدمت في قالب جميل. هنا مساحة للكتابة والتأملات."
   location: "الجزائر"
   links:
     - label: "GitHub"
@@ -94,7 +94,7 @@ defaults:
 #===========================================================
 # NAVIGATION
 #===========================================================
-    
+
 masthead_links:
   - title: "الرئيسية"
     url: /
@@ -107,7 +107,7 @@ masthead_links:
   - title: "مساحة الترفيه"
     url: /pause-detente/
   - title: "دفتر القراء"
-    url: /cahier-des-lecteurs/
+    url: /cahir-des-lecteurs/
   - title: "أدوات مجانية"
     url: /ressources-gratuites/
   - title: "عني"
