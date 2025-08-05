@@ -3,15 +3,37 @@ layout: single
 author_profile: true
 ---
 
-<h1 style="text-align: center; color: red;">تحديث إجباري بتاريخ 5 أغسطس 2025</h1>
-
-<div class="page__content">
-  ... (بقية محتوى الصفحة)
-
 <div class="page__content">
   <h2 style="text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">
-    ✨ أحدث التدوينات ✨
+    ✨ من ومضات الحبر ✨
   </h2>
+
+  <h3>آخر المقالات</h3>
+  <ul>
+    {% for post in site.articles limit:1 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h3>آخر الخواطر</h3>
+  <ul>
+    {% for post in site.thoughts limit:3 %}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="/pause-detente/" class="btn btn--primary btn--large">اكتشف ركن الترفيه</a>
+  </div>
+
+</div>
 
   <h3>آخر المقالات</h3>
   <ul>
