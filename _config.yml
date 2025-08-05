@@ -5,9 +5,9 @@
 locale: "ar"
 title: "دفتر الخواطر"
 description: "مدونة شخصية للتعبير عن الخواطر، التأملات، ومشاركة الرؤى حول الحياة وتطوير الذات."
-url: ""
-baseurl: ""
-repository: ""
+url: "https://djameldidin.github.io"
+baseurl: "/daftar-khawater"
+repository: "djameldidin/daftar-khawater"
 
 #===========================================================
 # THEME SETTINGS
