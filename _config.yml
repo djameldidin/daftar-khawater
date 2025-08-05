@@ -6,8 +6,8 @@ locale: "ar"
 title: "حبر شفاف" # تم التغيير هنا
 description: "مساحة للكتابة الصادقة، الأفكار الواضحة، والتأملات التي تعبر عن الذات." # تم تغيير الوصف هنا
 url: "https://djameldidin.github.io"
-baseurl: "/daftar-khawater" # سنناقش تغيير هذا لاحقًا
-repository: "djameldidin/daftar-khawater" # وهذا أيضًا
+baseurl: "/hibr-shafaf" 
+repository: "djameldidin/hibr-shafaf" 
 
 #===========================================================
 # THEME SETTINGS
