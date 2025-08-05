@@ -44,6 +44,9 @@ collections:
   thoughts:
     output: true
     permalink: /thoughts/:path/
+  life_stories:
+    output: true
+    permalink: /life-stories/:path/
 
 #===========================================================
 # PLUGINS & DEFAULTS
@@ -79,6 +82,18 @@ defaults:
       author_profile: true
       share: true
       read_time: false
+  - scope:
+      path: ""
+      type: "life_stories" # القسم الجديد
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      read_time: true
+
+#===========================================================
+# NAVIGATION
+#===========================================================
 
 #===========================================================
 # NAVIGATION
@@ -91,6 +106,8 @@ masthead_links:
     url: /thoughts/
   - title: "مقالات ورؤى"
     url: /articles/
+  - title: "قصص من الحياة"
+    url: /life-stories/
   - title: "مساحة الترفيه"
     url: /pause-detente/
   - title: "دفتر القراء"
