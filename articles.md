@@ -1,10 +1,7 @@
 ---
-layout: archive
 title: "مقالات ورؤى"
+permalink: /articles/
+layout: collection
+collection: articles
+entries_layout: list
 ---
-
-<div class="entries-{{ page.entries_layout | default: 'list' }}">
-  {% for post in site.articles %}
-    {% include archive-single.html type=page.entries_layout %}
-  {% endfor %}
-</div>
