@@ -1,0 +1,81 @@
+#===========================================================
+# SITE SETTINGS
+#===========================================================
+
+locale: "ar"
+title: "دفتر الخواطر"
+description: "مدونة شخصية للتعبير عن الخواطر، التأملات، ومشاركة الرؤى حول الحياة وتطوير الذات."
+url: ""
+baseurl: ""
+repository: ""
+
+#===========================================================
+# THEME SETTINGS
+#===========================================================
+
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "air"
+
+#===========================================================
+# AUTHOR SETTINGS
+#===========================================================
+
+author:
+  name: "عدلي رغدة"
+  avatar: "/assets/images/profile.jpg"
+  bio: "أؤمن أن أبسط فكرة يمكنها أن تغيّر نظرتنا للعالم إذا قُدمت في قالب جميل. هنا مساحة للخواطر والتأملات."
+  location: "الجزائر"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/djameldidin"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:raghdachaimaa@gmail.com"
+
+#===========================================================
+# COLLECTIONS
+#===========================================================
+
+collections:
+  articles:
+    output: true
+    permalink: /articles/:path/
+  thoughts:
+    output: true
+    permalink: /thoughts/:path/
+
+#===========================================================
+# PLUGINS & DEFAULTS
+#===========================================================
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-include-cache
+
+paginate: 5
+paginate_path: "/page:num/"
+future: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      read_time: true
+  - scope:
+      path: ""
+      type: "thoughts"
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      read_time: false

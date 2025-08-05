@@ -1,0 +1,15 @@
+main:
+  - title: "الرئيسية"
+    url: /
+  - title: "الخواطر"
+    url: /thoughts/
+  - title: "مقالات ورؤى"
+    url: /articles/
+  - title: "مساحة الترفيه"
+    url: /pause-detente/
+  - title: "دفتر القراء"
+    url: /cahier-des-lecteurs/
+  - title: "أدوات مجانية"
+    url: /ressources-gratuites/
+  - title: "عني"
+    url: /about/

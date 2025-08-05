@@ -1,0 +1,42 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "UTF-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+@import "custom";
+@import "custom-rtl";
+
+/* --- RTL adjustments --- */
+html[lang="ar"] {
+  direction: rtl !important;
+  text-align: right;
+}
+
+body {
+  font-family: 'Tajawal', 'Cairo', sans-serif !important;
+}
+
+/* Force RTL on all elements */
+* {
+  direction: rtl !important;
+  text-align: right;
+}
+
+/* Flex items: reverse direction */
+nav, .site-nav, .greedy-nav, .nav__list, .author__urls {
+  flex-direction: row-reverse !important;
+}
+
+/* Ensure list items are aligned right */
+ul, ol, li {
+  text-align: right;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, p {
+  text-align: right;
+}
+
