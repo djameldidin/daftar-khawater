@@ -91,24 +91,5 @@ defaults:
       share: true
       read_time: true
 
-#===========================================================
-# NAVIGATION
-#===========================================================
 
-masthead_links:
-  - title: "الرئيسية"
-    url: /
-  - title: "الخواطر"
-    url: /thoughts/
-  - title: "مقالات ورؤى"
-    url: /articles/
-  - title: "قصص من الحياة"
-    url: /life-stories/
-  - title: "مساحة الترفيه"
-    url: /pause-detente/
-  - title: "دفتر القراء"
-    url: /cahir-des-lecteurs/
-  - title: "أدوات مجانية"
-    url: /ressources-gratuites/
-  - title: "عني"
-    url: /about/
+  
