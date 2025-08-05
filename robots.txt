@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://djameldidin.github.io/daftar-khawater/sitemap.xml
