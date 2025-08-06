@@ -90,6 +90,10 @@ defaults:
       author_profile: true
       share: true
       read_time: true
+version: "{{ site.time | date: '%s' }}"
+# في أي مكان من ملف _config.yml
+include:
+  - _includes/head-custom.html
 
 
   
