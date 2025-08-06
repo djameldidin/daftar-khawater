@@ -4,12 +4,12 @@
 
 @charset "UTF-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
+// Import Skins & Base Styles
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
 @import "custom";
-@import "custom-rtl";
 
-/* --- RTL adjustments --- */
+// RTL Adjustments
 html[lang="ar"] {
   direction: rtl !important;
   text-align: right;
@@ -39,4 +39,3 @@ ul, ol, li {
 h1, h2, h3, h4, h5, h6, p {
   text-align: right;
 }
-

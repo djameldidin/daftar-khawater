@@ -1,0 +1,69 @@
+/* ---------- تنسيق الشريط العلوي ---------- */
+.masthead {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.masthead__inner-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .site-title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .masthead__menu-toggle {
+    font-size: 1.5rem;
+    color: #007bff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    order: -1;
+    display: none;
+  }
+
+  .greedy-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .visible-links {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .masthead__menu-toggle {
+      display: inline-block;
+    }
+
+    .greedy-nav .visible-links {
+      display: none;
+    }
+
+    .greedy-nav.nav-open .visible-links {
+      display: flex !important;
+      flex-direction: column;
+      background-color: #fff;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 10px 0;
+      z-index: 999;
+    }
+
+    .greedy-nav.nav-open .visible-links li {
+      padding: 10px;
+      text-align: center;
+    }
+  }
+}
