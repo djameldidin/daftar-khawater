@@ -5122,6 +5122,7 @@ body {
   color: #333;
 }
 
+/* ---------- ألوان رئيسية ---------- */
 a {
   color: #d67e2c;
 }
@@ -5130,6 +5131,7 @@ a:hover {
   color: #a85b14;
 }
 
+/* ---------- اتجاه RTL ---------- */
 html[lang=ar] {
   direction: rtl !important;
   text-align: right;
@@ -5140,21 +5142,32 @@ html[lang=ar] {
   text-align: right;
 }
 
+/* عناصر Flex عكس الاتجاه */
+nav, .site-nav, .greedy-nav, .nav__list, .author__urls {
+  flex-direction: row-reverse !important;
+}
+
+/* قائمة */
 ul, ol, li {
   text-align: right;
 }
 
+/* عناوين */
 h1, h2, h3, h4, h5, h6, p {
   text-align: right;
 }
 
 .masthead {
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background-color: #ffffff; /* خلفية بيضاء ناعمة */
+  border-bottom: 1px solid #eaeaea;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.masthead.scrolled {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .masthead__inner-wrap {
@@ -5165,12 +5178,17 @@ h1, h2, h3, h4, h5, h6, p {
 
 .masthead__menu-toggle {
   font-size: 1.5rem;
-  color: #007bff;
+  color: #007bff; /* أزرق هادئ */
   background: none;
   border: none;
   cursor: pointer;
   display: none;
-  order: -1;
+}
+@media (max-width: 768px) {
+  .masthead__menu-toggle {
+    display: inline-block;
+    order: -1; /* في أقصى اليمين */
+  }
 }
 
 .greedy-nav {
@@ -5179,38 +5197,39 @@ h1, h2, h3, h4, h5, h6, p {
   justify-content: flex-end;
   align-items: center;
 }
-
 .greedy-nav .visible-links {
   display: flex;
   gap: 20px;
-  list-style: none;
 }
-
-.greedy-nav .visible-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
 @media (max-width: 768px) {
-  .masthead__menu-toggle {
-    display: block;
-  }
   .greedy-nav .visible-links {
     display: none;
+  }
+  .greedy-nav.nav-open .visible-links {
+    display: flex;
     flex-direction: column;
-    background: #fff;
+    background: #ffffff;
     position: absolute;
     top: 60px;
     right: 0;
     width: 100%;
-    padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  .greedy-nav.nav-open .visible-links {
-    display: flex;
+    padding: 10px 0;
+    z-index: 999;
   }
 }
+
+.greedy-nav .visible-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.greedy-nav .visible-links li a:hover {
+  color: #d67e2c; /* لون hover */
+}
+
 /* ---------- تنسيق صفحة الأرشيف ---------- */
 .archive {
   text-align: right;
@@ -5225,7 +5244,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .archive ul {
   list-style: none;
-  padding-right: 0;
+  padding-right: 0; /* تصحيح لمحاذاة RTL */
 }
 
 .archive .post-date {
