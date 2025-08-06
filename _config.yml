@@ -65,20 +65,13 @@ paginate_path: "/page:num/"
 future: true
 
 #===========================================================
-# COMMENTS SETTINGS (Giscus)
+# COMMENTS SETTINGS (disqus)
 #===========================================================
 comments:
-  provider: "giscus"
-  giscus:
-    repo:               "djameldidin/hibr-shafaf" # تأكدي أن هذا صحيح
-    repo_id:            "R_kgDOPXhahw" # <--- سنملأ هذا الآن
-    category:           "Announcements" # <--- تأكدي أن هذه هي الفئة التي اخترتيها
-    category_id:        "DIC_kwDOPXhah84Ct3GA" # <--- سنملأ هذا الآن
-    discussion_term:    "pathname"
-    reactions_enabled:  1 # 1 للتفعيل, 0 للتعطيل
-    theme:              "light" # يمكنك تغييره إلى "dark" أو "preferred_color_scheme" لاحقاً
+  provider: "disqus"
+  disqus:
+    shortname: "https-djameldidin-github-io-hibr-shafaf"
 
-# Defaults
 defaults:
   - scope:
       path: ""
@@ -89,6 +82,7 @@ defaults:
       share: true
       read_time: true
       comments: true
+
   - scope:
       path: ""
       type: "thoughts"
@@ -98,6 +92,7 @@ defaults:
       share: true
       read_time: false
       comments: true
+
   - scope:
       path: ""
       type: "life_stories"
@@ -107,6 +102,15 @@ defaults:
       share: true
       read_time: true
       comments: true
+
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: single
+      author_profile: false
+      comments: true
+
 version: "{{ site.time | date: '%s' }}"
 # في أي مكان من ملف _config.yml
 include:

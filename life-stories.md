@@ -2,7 +2,6 @@
 layout: archive
 title: "قصص من الحياة"
 permalink: /life-stories/
-comments: true
 ---
 
 <div class="entries-{{ page.entries_layout | default: 'list' }}">
@@ -11,6 +10,3 @@ comments: true
   {% endfor %}
 </div>
 
-{% if page.comments != false and site.comments.provider == "giscus" %}
-  {% include giscus.html %}
-{% endif %}

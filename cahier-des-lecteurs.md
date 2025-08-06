@@ -3,7 +3,6 @@ layout: single
 title: "دفتر القراء"
 permalink: /cahier-des-lecteurs/
 author_profile: true
-comments: true
 ---
 
 ## 💌 مساحتكم الخاصة
@@ -20,6 +19,4 @@ comments: true
 في الوقت الحالي، أفضل طريقة للمشاركة هي عبر ترك تعليقاتكم على "الخواطر" و "المقالات". تعليقاتكم هي التي ستبني هذا الركن وتثريه.
 
 
-{% if page.comments != false and site.comments.provider == "giscus" %}
-  {% include giscus.html %}
-{% endif %}
+
