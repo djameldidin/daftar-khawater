@@ -19,7 +19,7 @@
 }
 
 .masthead__menu-toggle {
-  font-size: 1.5rem;
+  font-size: 0.95rem;
   color: #007bff; /* أزرق هادئ */
   background: none;
   border: none;
@@ -40,13 +40,16 @@
 
   .visible-links {
     display: flex;
-    gap: 20px;
+    gap: 10px;
   }
 
   @media (max-width: 768px) {
     .visible-links {
       display: none;
     }
+    .greedy-nav .visible-links li {
+  flex-shrink: 1;
+}
 
     &.nav-open .visible-links {
       display: flex;
