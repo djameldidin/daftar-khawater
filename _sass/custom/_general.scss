@@ -1,4 +1,5 @@
 /* ---------- إعدادات عامة ---------- */
+
 body {
   font-family: 'Tajawal', 'Cairo', sans-serif !important;
   line-height: 1.8;
@@ -6,11 +7,28 @@ body {
   color: #333;
 }
 
-/* ---------- ألوان رئيسية ---------- */
 a {
   color: #d67e2c;
 }
 
 a:hover {
   color: #a85b14;
+}
+
+html[lang="ar"] {
+  direction: rtl !important;
+  text-align: right;
+}
+
+* {
+  direction: rtl !important;
+  text-align: right;
+}
+
+ul, ol, li {
+  text-align: right;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  text-align: right;
 }
