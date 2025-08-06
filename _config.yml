@@ -64,6 +64,20 @@ paginate: 5
 paginate_path: "/page:num/"
 future: true
 
+#===========================================================
+# COMMENTS SETTINGS (Giscus)
+#===========================================================
+comments:
+  provider: "giscus"
+  giscus:
+    repo:               "djameldidin/hibr-shafaf" # تأكدي أن هذا صحيح
+    repo_id:            "R_kgDOPXhahw" # <--- سنملأ هذا الآن
+    category:           "Announcements" # <--- تأكدي أن هذه هي الفئة التي اخترتيها
+    category_id:        "DIC_kwDOPXhah84Ct3GA" # <--- سنملأ هذا الآن
+    discussion_term:    "pathname"
+    reactions_enabled:  1 # 1 للتفعيل, 0 للتعطيل
+    theme:              "light" # يمكنك تغييره إلى "dark" أو "preferred_color_scheme" لاحقاً
+
 # Defaults
 defaults:
   - scope:
