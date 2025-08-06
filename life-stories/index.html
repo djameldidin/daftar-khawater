@@ -117,6 +117,14 @@
         
       </ul>
     </nav>
+    <!-- هذا للتأكد أن القائمة مخفية في البداية -->
+<style>
+  @media (max-width: 768px) {
+    .greedy-nav .visible-links {
+      display: none !important;
+    }
+  }
+</style>
     <script>
   document.addEventListener("DOMContentLoaded", function() {
     const menuToggle = document.querySelector(".masthead__menu-toggle");

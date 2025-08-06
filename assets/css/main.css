@@ -5196,6 +5196,24 @@ a:hover {
     text-align: center;
   }
 }
+.greedy-nav.nav-open .visible-links {
+  display: flex !important;
+  flex-direction: column;
+  background-color: #fff;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 999;
+}
+
+.greedy-nav.nav-open .visible-links li {
+  padding: 10px;
+  text-align: center;
+}
+
 /* تنسيق صفحة الأرشيف */
 .archive {
   text-align: right;
