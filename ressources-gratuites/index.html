@@ -117,6 +117,16 @@
         
       </ul>
     </nav>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.querySelector(".masthead__menu-toggle");
+    const siteNav = document.getElementById("site-nav");
+
+    menuToggle.addEventListener("click", function() {
+      siteNav.classList.toggle("nav-open");
+    });
+  });
+</script>
 
   </div>
 </header>
