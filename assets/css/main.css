@@ -5131,6 +5131,53 @@ a:hover {
   color: #a85b14;
 }
 
+/* ---------- تنسيق الشريط العلوي ---------- */
+.masthead__inner-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.masthead__inner-wrap .site-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.masthead__inner-wrap .masthead__menu-toggle {
+  font-size: 1.5rem;
+  color: #007bff; /* اللون الأزرق */
+  background: none;
+  border: none;
+  cursor: pointer;
+  order: -1; /* لوضعه في أقصى اليمين */
+}
+.masthead__inner-wrap .greedy-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.masthead__inner-wrap .greedy-nav .visible-links {
+  display: flex;
+}
+.masthead__inner-wrap .greedy-nav .hidden-links-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .masthead__inner-wrap .greedy-nav .visible-links {
+    display: none;
+  }
+  .masthead__inner-wrap .greedy-nav .hidden-links-toggle {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #007bff;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .masthead__inner-wrap .masthead__menu-toggle {
+    display: inline-block;
+  }
+}
+
 /* تنسيق صفحة الأرشيف */
 .archive {
   text-align: right;
