@@ -12,7 +12,7 @@
 
 .archive ul {
   list-style: none;
-  padding-right: 0;
+  padding-right: 0; /* تصحيح لمحاذاة RTL */
 }
 
 .archive .post-date {

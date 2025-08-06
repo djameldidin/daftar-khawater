@@ -1,5 +1,4 @@
 /* ---------- إعدادات عامة ---------- */
-
 body {
   font-family: 'Tajawal', 'Cairo', sans-serif !important;
   line-height: 1.8;
@@ -7,6 +6,7 @@ body {
   color: #333;
 }
 
+/* ---------- ألوان رئيسية ---------- */
 a {
   color: #d67e2c;
 }
@@ -15,6 +15,7 @@ a:hover {
   color: #a85b14;
 }
 
+/* ---------- اتجاه RTL ---------- */
 html[lang="ar"] {
   direction: rtl !important;
   text-align: right;
@@ -25,10 +26,17 @@ html[lang="ar"] {
   text-align: right;
 }
 
+/* عناصر Flex عكس الاتجاه */
+nav, .site-nav, .greedy-nav, .nav__list, .author__urls {
+  flex-direction: row-reverse !important;
+}
+
+/* قائمة */
 ul, ol, li {
   text-align: right;
 }
 
+/* عناوين */
 h1, h2, h3, h4, h5, h6, p {
   text-align: right;
 }

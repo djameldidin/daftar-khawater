@@ -1,11 +1,15 @@
-
 .masthead {
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background-color: #ffffff; /* خلفية بيضاء ناعمة */
+  border-bottom: 1px solid #eaeaea;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .masthead__inner-wrap {
@@ -16,12 +20,16 @@
 
 .masthead__menu-toggle {
   font-size: 1.5rem;
-  color: #007bff;
+  color: #007bff; /* أزرق هادئ */
   background: none;
   border: none;
   cursor: pointer;
-  display: none; // مخفي على الكمبيوتر
-  order: -1;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: inline-block;
+    order: -1; /* في أقصى اليمين */
+  }
 }
 
 .greedy-nav {
@@ -29,38 +37,40 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  .visible-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .visible-links {
+      display: none;
+    }
+
+    &.nav-open .visible-links {
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      z-index: 999;
+    }
+  }
 }
 
-.greedy-nav .visible-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.greedy-nav .visible-links a {
+.greedy-nav .visible-links li a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .masthead__menu-toggle {
-    display: block;
-  }
-
-  .greedy-nav .visible-links {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-
-  .greedy-nav.nav-open .visible-links {
-    display: flex;
-  }
+.greedy-nav .visible-links li a:hover {
+  color: #d67e2c; /* لون hover */
 }
+
