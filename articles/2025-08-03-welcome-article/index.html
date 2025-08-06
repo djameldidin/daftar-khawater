@@ -342,7 +342,7 @@
     
       
         <p>
-          Comments are configured with provider: <strong>giscus</strong>,
+          Comments are configured with provider: <strong>disqus</strong>,
           but are disabled in non-production environments.
         </p>
       
@@ -394,38 +394,21 @@
 
 
 
-    <script>
-  'use strict';
-
-  (function () {
-    var commentContainer = document.querySelector('#giscus-comments');
-
-    if (!commentContainer) {
-      return;
-    }
-
-    var script = document.createElement('script');
-
-    script.setAttribute('src', 'https://giscus.app/client.js');
-    script.setAttribute('data-repo', 'djameldidin/hibr-shafaf');
-    script.setAttribute('data-repo-id', 'R_kgDOPXhahw');
-    script.setAttribute('data-category', '');
-    script.setAttribute('data-category-id', 'DIC_kwDOPXhah84Ct3GA');
-    script.setAttribute('data-mapping', 'pathname');
-    script.setAttribute('data-strict', '0');
-    script.setAttribute('data-reactions-enabled', '1');
-    script.setAttribute('data-emit-metadata', '0');
-    script.setAttribute('data-input-position', 'top');
-    script.setAttribute('data-theme', 'light');
-    script.setAttribute('data-lang',  'en');
     
-    script.setAttribute('crossorigin', 'anonymous');
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://djameldidin.github.io/hibr-shafaf/articles/2025-08-03-welcome-article/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/articles/welcome-article"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-djameldidin-github-io-hibr-shafaf.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-    script.setAttribute('async', '');
-
-    commentContainer.appendChild(script);
-  })();
-</script>
 
   
 
