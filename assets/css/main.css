@@ -5157,6 +5157,16 @@ h1, h2, h3, h4, h5, h6, p {
   text-align: right;
 }
 
+/* داخل _custom.scss أو _general.scss */
+.icon-only-mobile {
+  display: inline;
+}
+@media screen and (min-width: 768px) {
+  .icon-only-mobile {
+    display: none;
+  }
+}
+
 .masthead {
   background-color: #ffffff; /* خلفية بيضاء ناعمة */
   border-bottom: 1px solid #eaeaea;
@@ -5259,6 +5269,10 @@ h1, h2, h3, h4, h5, h6, p {
   background: #f0f0f0;
 }
 .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown.open .dropdown-menu {
   display: block;
 }
 
