@@ -1,26 +1,31 @@
-main:
-  - title: "الرئيسية"
-    url: /
-  - title: "الخواطر"
-    url: /thoughts/
-  - title: "مقالات ورؤى"
-    url: /articles/
-  - title: "قصص من الحياة"
-    url: /life-stories/
-  - title: "مساحة الترفيه"
-    url: /pause-detente/
-  - title: "دفتر القراء"
-    url: "/cahier-des-lecteurs/"
-    children:
-      - title: "الصفحة الرئيسية"
-        url: "/cahier-des-lecteurs/"
-      - title: "💌 رسائل القراء"
-        url: "/messages-des-lecteurs/"
-      - title: "✍️ مساحة صامتة"
-        url: "/espace-silencieux/"
-      - title: "✨ سؤال الشهر"
-        url: "/question-du-mois/"
-  - title: "أدوات مجانية"
-    url: /ressources-gratuites/
-  - title: "عني"
-    url: /about/
+- title: "🏠 الرئيسية"
+  url: "/"
+
+- title: "📂 المقالات"
+  url: "/articles/"
+
+- title: "🖋️ خواطر"
+  url: "/thoughts/"
+
+- title: "📚 دفتر القراء"
+  url: "/cahier-des-lecteurs/"
+  children:
+    - title: "💌 رسائل القراء"
+      url: "/messages-des-lecteurs/"
+    - title: "✍️ مساحة صامتة"
+      url: "/espace-silencieux/"
+    - title: "✨ سؤال الشهر"
+      url: "/question-du-mois/"
+
+- title: "📖 قصص من الحياة"
+  url: "/life-stories/"
+
+- title: "🎈 مساحة الترفيه"
+  url: "/pause-detente/"
+
+
+- title: "🎁 أدوات مجانية"
+  url: "/outils-gratuits/"
+
+- title: "👤 عني"
+  url: "/a-propos/"
