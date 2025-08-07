@@ -1,5 +1,5 @@
 - title: "🏠 الرئيسية"
-  url: "/"
+  url: ""
 
 - title: "📂 المقالات"
   url: "/articles/"
@@ -23,9 +23,38 @@
 - title: "🎈 مساحة الترفيه"
   url: "/pause-detente/"
 
-
 - title: "🎁 أدوات مجانية"
-  url: "/outils-gratuits/"
+  url: "/ressources-gratuites/"
 
 - title: "👤 عني"
-  url: "/a-propos/"
+  url: "/about/"
+
+- title: "<span class='icon-only-mobile'>🏠</span> الرئيسية  "
+  url: "/"
+
+- title: "<span class='icon-only-mobile'>📂</span> المقالات "
+  url: "/articles/"
+
+- title: "<span class='icon-only-mobile'>🖋️</span> خواطر "
+  url: "/thoughts/"
+
+- title: "<span class='icon-only-mobile'>📚</span>  مدفتر القراء"
+  url: "/cahier-des-lecteurs/"
+
+- title: "<span class='icon-only-mobile'>📖</span> قصص من الحياة"
+  url: "/life-stories/"
+
+- title: "<span class='icon-only-mobile'>🎈</span> مساحة الترفيه"
+  url: "/pause-detente/"
+
+- title: "<span class='icon-only-mobile'>🎁</span> أدوات مجانيه"
+  url: "/ressources-gratuites/"
+
+- title: "<span class='icon-only-mobile'>👤</span> عني"
+  url: "/about/"
+
+
+
+
+
+
