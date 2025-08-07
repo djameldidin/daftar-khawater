@@ -1,53 +1,55 @@
-<style>
-.reader-corner {
-  direction: rtl;
-  padding: 3rem 1rem;
-  background: #fdfcfb;
-  color: #333;
-  font-family: 'Amiri', serif;
+/* _sass/custom/_reader.scss */
+
+/* الأساس العام لقسم دفتر القراء */
+.cahier-readers {
+  background-color: #fdfaf6;
+  padding: 2rem 1rem;
+
+  h1, h2, h3 {
+    color: #6a4e3a;
+    font-family: 'Amiri', serif;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+  }
 }
-.reader-corner .wrapper {
-  max-width: 800px;
-  margin: auto;
-}
-.reader-header h2 {
-  font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-.reader-header .intro {
-  text-align: center;
-  font-style: italic;
-  margin-bottom: 2rem;
-}
-.reader-feedback blockquote {
+
+/* تصميم رسائل القراء كبطاقات */
+.reader-message {
   background: #fff;
-  border-right: 4px solid #ccc;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 8px;
+  border: 1px solid #e5ddd5;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .message-author {
+    text-align: right;
+    font-style: italic;
+    margin-top: 1rem;
+    color: #8a6d46;
+  }
 }
-.reader-feedback cite {
-  display: block;
-  margin-top: 0.5rem;
-  text-align: left;
-  color: #666;
-}
-.monthly-question .question {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-.monthly-question .btn {
+
+/* تصميم رابط العودة لبقية الرسائل */
+.back-to-messages {
   display: inline-block;
-  background: #e0c9a6;
-  color: #000;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  text-decoration: none;
+  margin-top: 1.5rem;
+  color: #6a4e3a;
+  text-decoration: underline;
+  font-weight: bold;
+
+  &:hover {
+    color: #a97b50;
+  }
 }
-.silent-notebook iframe {
-  border: none;
-  border-radius: 8px;
-  margin-top: 1rem;
-}
-</style>

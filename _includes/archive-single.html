@@ -1,18 +1,13 @@
-{% if page.comments != false %}
-  {% if site.comments.provider == "disqus" %}
-    <div id="disqus_thread"></div>
-    <script>
-      var disqus_config = function () {
-        this.page.url = '{{ page.url | absolute_url }}';
-        this.page.identifier = '{{ page.url | absolute_url }}';
-      };
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://{{ site.comments.disqus.shortname }}.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    <noscript>الرجاء تفعيل الجافاسكريبت لرؤية التعليقات.</noscript>
-  {% endif %}
-{% endif %}
+<div class="list__item">
+  <article class="archive__item">
+    <h2 class="archive__item-title">
+      <a href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
+    </h2>
+    {% if post.date %}
+      <p class="page__meta"><i class="far fa-calendar-alt" aria-hidden="true"></i> {{ post.date | date: "%B %d, %Y" }}</p>
+    {% endif %}
+    {% if post.excerpt %}
+      <p class="archive__item-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+    {% endif %}
+  </article>
+</div>
