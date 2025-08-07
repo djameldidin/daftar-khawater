@@ -1,0 +1,11 @@
+/* --- Disqus Customization --- */
+
+// لإخفاء أزرار الدخول عبر الشبكات الاجتماعية
+#disqus_thread #connect {
+  display: none !important;
+}
+
+// لإخفاء جملة "Also on Disqus" التي قد تظهر في الأسفل
+#disqus_thread #disqus_recommendations {
+  display: none !important;
+}

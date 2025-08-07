@@ -2,6 +2,7 @@
 layout: archive
 title: "قصص من الحياة"
 permalink: /life-stories/
+comments: true
 ---
 
 <div class="entries-{{ page.entries_layout | default: 'list' }}">
