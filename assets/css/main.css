@@ -5344,6 +5344,45 @@ h1, h2, h3, h4, h5, h6, p {
   color: #a97b50;
 }
 
+.readers-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.readers-dropdown .readers-dropbtn {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+.readers-dropdown .readers-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  direction: rtl;
+}
+.readers-dropdown .readers-dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.readers-dropdown .readers-dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.readers-dropdown:hover .readers-dropdown-content {
+  display: block;
+}
+.readers-dropdown .readers-dropbtn:focus + .readers-dropdown-content,
+.readers-dropdown .readers-dropbtn:active + .readers-dropdown-content {
+  display: block;
+}
+
 html[lang=ar] {
   direction: rtl !important;
   text-align: right;
