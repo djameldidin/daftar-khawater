@@ -5256,6 +5256,15 @@ h1, h2, h3, h4, h5, h6, p {
   margin-right: 0.5rem;
 }
 
+/* --- Disqus Customization --- */
+#disqus_thread #connect {
+  display: none !important;
+}
+
+#disqus_thread #disqus_recommendations {
+  display: none !important;
+}
+
 html[lang=ar] {
   direction: rtl !important;
   text-align: right;
