@@ -10,7 +10,16 @@ main:
   - title: "مساحة الترفيه"
     url: /pause-detente/
   - title: "دفتر القراء"
-    url: /cahier-des-lecteurs/
+    url: "/cahier-des-lecteurs/"
+    children:
+      - title: "الصفحة الرئيسية"
+        url: "/cahier-des-lecteurs/"
+      - title: "💌 رسائل القراء"
+        url: "/messages-des-lecteurs/"
+      - title: "✍️ مساحة صامتة"
+        url: "/espace-silencieux/"
+      - title: "✨ سؤال الشهر"
+        url: "/question-du-mois/"
   - title: "أدوات مجانية"
     url: /ressources-gratuites/
   - title: "عني"

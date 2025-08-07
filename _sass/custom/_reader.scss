@@ -1,0 +1,53 @@
+<style>
+.reader-corner {
+  direction: rtl;
+  padding: 3rem 1rem;
+  background: #fdfcfb;
+  color: #333;
+  font-family: 'Amiri', serif;
+}
+.reader-corner .wrapper {
+  max-width: 800px;
+  margin: auto;
+}
+.reader-header h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.reader-header .intro {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+.reader-feedback blockquote {
+  background: #fff;
+  border-right: 4px solid #ccc;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+.reader-feedback cite {
+  display: block;
+  margin-top: 0.5rem;
+  text-align: left;
+  color: #666;
+}
+.monthly-question .question {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.monthly-question .btn {
+  display: inline-block;
+  background: #e0c9a6;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.silent-notebook iframe {
+  border: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+</style>
