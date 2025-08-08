@@ -50,21 +50,20 @@
     .greedy-nav .visible-links li {
   flex-shrink: 1;
 }
-    &.nav-open .visible-links {
-      display: flex;
-      flex-direction: column;
-      background: #ffffff;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      padding: 10px 0;
-      z-index: 999;
-    }
-  }
+.greedy-nav.nav-open .visible-links {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 999;
 }
-
+}
+}
 .greedy-nav .visible-links li a {
   text-decoration: none;
   color: #333;
