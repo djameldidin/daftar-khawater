@@ -4,11 +4,16 @@ body {
   line-height: 1.8;
   font-size: 1rem;
   color: #333;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
 }
 
-/* ---------- ألوان رئيسية ---------- */
+/* ---------- ألوان الروابط ---------- */
 a {
   color: #d67e2c;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
@@ -16,31 +21,103 @@ a:hover {
 }
 
 /* ---------- اتجاه RTL ---------- */
-html[lang="ar"] {
+html[lang="ar"], * {
   direction: rtl !important;
   text-align: right;
 }
 
-* {
-  direction: rtl !important;
-  text-align: right;
-}
-
-/* عناصر Flex عكس الاتجاه */
-nav, .site-nav, .greedy-nav, .nav__list, .author__urls {
-  flex-direction: row-reverse !important;
-}
-
-/* قائمة */
-ul, ol, li {
-  text-align: right;
-}
-
-/* عناوين */
+/* ---------- القوائم والعناوين ---------- */
+ul, ol, li,
 h1, h2, h3, h4, h5, h6, p {
   text-align: right;
 }
-/* داخل _custom.scss أو _general.scss */
+
+/* ---------- ترتيب عناصر Flex ---------- */
+nav,
+.greedy-nav,
+.nav__list,
+.author__urls,
+.dropdown-menu {
+  flex-direction: row-reverse !important;
+}
+
+/* ---------- التنقل ---------- */
+.masthead__menu-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #d67e2c;
+  cursor: pointer;
+}
+
+.greedy-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.greedy-nav.nav-open .visible-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.visible-links > li {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 0.5rem 0;
+  z-index: 99;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 0.25rem 1rem;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* ---------- الهواتف المحمولة ---------- */
+@media screen and (max-width: 768px) {
+  .greedy-nav {
+    flex-direction: column;
+  }
+
+  .visible-links {
+    flex-direction: column;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none; // منع الفتح عند التحويم على الهاتف
+  }
+
+  .dropdown.open .dropdown-menu {
+    display: block; // تفعيل الفتح عند النقر
+  }
+
+  .masthead__menu-toggle {
+    display: inline-block;
+  }
+}
+
+/* ---------- أيقونات تظهر فقط على الهاتف ---------- */
 .icon-only-mobile {
   display: inline;
 
