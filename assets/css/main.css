@@ -5218,7 +5218,7 @@ h1, h2, h3, h4, h5, h6, p {
   .greedy-nav .greedy-nav .visible-links li {
     flex-shrink: 1;
   }
-  .greedy-nav.nav-open .visible-links {
+  .greedy-nav .greedy-nav.nav-open .visible-links {
     display: flex;
     flex-direction: column;
     background: #ffffff;
