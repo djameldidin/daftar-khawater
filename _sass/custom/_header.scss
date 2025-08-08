@@ -76,41 +76,54 @@
   color: #d67e2c; /* لون hover */
 }
 
-/* نمط القائمة المنسدلة */
+/* حاوية العنصر المنسدل */
 .dropdown {
   position: relative;
+}
 
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: white;
-    border: 1px solid #ddd;
-    list-style: none;
-    padding: 0;
+/* القائمة المنسدلة */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  min-width: 200px;
+  z-index: 1000;
+
+  li {
     margin: 0;
-    z-index: 1000;
-    min-width: 200px;
+  }
 
-    li a {
-      display: block;
-      padding: 0.5em 1em;
-      text-decoration: none;
-      color: #333;
-    }
+  a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
 
-    li a:hover {
+    &:hover {
       background: #f0f0f0;
     }
   }
+}
 
-  &:hover .dropdown-menu {
+/* عند التحويم على الكمبيوتر */
+@media (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
     display: block;
   }
 }
+
+/* عند النقر على الهاتف */
 .dropdown.open .dropdown-menu {
   display: block;
 }
+
 
 
 

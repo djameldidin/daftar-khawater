@@ -9,22 +9,18 @@
     <!-- روابط التنقل -->
     <nav id="site-nav" class="greedy-nav">
       <ul class="visible-links">
-       {% for link in site.data.navigation %}
-  {% if link.children %}
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');">
-        {{ link.title }}
-      </a>
-      <ul class="dropdown-menu">
-        {% for child in link.children %}
-          <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% else %}
-    <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
-  {% endif %}
-{% endfor %}
+{% if link.children %}
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');">
+      {{ link.title }}
+    </a>
+    <ul class="dropdown-menu">
+      {% for child in link.children %}
+        <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endif %}
       </ul>
     </nav>
 </div>
