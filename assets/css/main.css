@@ -5243,35 +5243,46 @@ h1, h2, h3, h4, h5, h6, p {
   color: #d67e2c; /* لون hover */
 }
 
-/* نمط القائمة المنسدلة */
+/* حاوية العنصر المنسدل */
 .dropdown {
   position: relative;
 }
-.dropdown .dropdown-menu {
+
+/* القائمة المنسدلة */
+.dropdown-menu {
   display: none;
   position: absolute;
+  top: 100%;
   right: 0;
   background: white;
   border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   list-style: none;
-  padding: 0;
+  padding: 0.5rem 0;
   margin: 0;
-  z-index: 1000;
   min-width: 200px;
+  z-index: 1000;
 }
-.dropdown .dropdown-menu li a {
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu a {
   display: block;
-  padding: 0.5em 1em;
-  text-decoration: none;
+  padding: 0.5rem 1rem;
   color: #333;
+  text-decoration: none;
 }
-.dropdown .dropdown-menu li a:hover {
+.dropdown-menu a:hover {
   background: #f0f0f0;
 }
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
 
+/* عند التحويم على الكمبيوتر */
+@media (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+/* عند النقر على الهاتف */
 .dropdown.open .dropdown-menu {
   display: block;
 }
