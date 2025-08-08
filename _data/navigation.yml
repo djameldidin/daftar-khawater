@@ -1,3 +1,4 @@
+main:
 - title: "<span class='icon-only-mobile'>🏠</span> الرئيسية  "
   url: "/"
 
@@ -7,7 +8,7 @@
 - title: "<span class='icon-only-mobile'>🖋️</span> خواطر "
   url: "/thoughts/"
 
-- title: "<span class='icon-only-mobile'>📚</span>  دفتر القراء"
+- title: "<span class='icon-only-mobile'>📚</span> دفتر القراء"
   url: "/cahier-des-lecteurs/"
   children: 
     - title: "💌 رسائل القراء"

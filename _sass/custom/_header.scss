@@ -40,7 +40,6 @@ $bp-desktop: 769px; // >= desktop
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   box-shadow: 0 0 0 rgba(0,0,0,0);
 
-  // Optional subtle shadow on scroll (can be toggled via a class on body)
   &.with-shadow,
   body.scrolled & {
     box-shadow: $shadow-md;
@@ -75,7 +74,8 @@ $bp-desktop: 769px; // >= desktop
     display: inline-flex;
     align-items: center;
 
-    img, svg {
+    img,
+    svg {
       display: block;
       height: 36px;
       width: auto;
@@ -102,7 +102,7 @@ $bp-desktop: 769px; // >= desktop
 // -------- Greedy Nav
 // Expected HTML structure:
 // <nav id="site-nav" class="greedy-nav">
-//   <button class="greedy-nav__toggle" aria-expanded="false" aria-controls="primary-menu">...</button>
+//   <button class="greedy-nav__toggle" aria-expanded="false" aria-controls="primary-menu"><span class="hamburger"></span></button>
 //   <ul id="primary-menu" class="visible-links">...</ul>
 // </nav>
 
@@ -112,55 +112,6 @@ $bp-desktop: 769px; // >= desktop
   align-items: center;
   gap: 16px;
   color: inherit;
-
-  // -------- Toggle (hamburger)
-  .greedy-nav__toggle {
-    display: none; // hidden on desktop, shown on mobile below
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 1px solid $border-color;
-    border-radius: 10px;
-    background: transparent;
-    color: $header-fg;
-    cursor: pointer;
-    transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
-
-    &:hover {
-      background: #f9fafb;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $brand-color;
-      outline-offset: 2px;
-    }
-
-    .hamburger {
-      position: relative;
-      width: 20px;
-      height: 2px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: transform 200ms ease, background 200ms ease;
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        inset-inline-start: 0;
-        width: 20px;
-        height: 2px;
-        background: currentColor;
-        border-radius: 2px;
-        transition: transform 200ms ease, opacity 200ms ease, top 200ms ease, bottom 200ms ease;
-      }
-
-      &::before { top: -6px; }
-      &::after  { top:  6px; }
-    }
-  }
 
   // -------- Visible links (menu)
   .visible-links {
@@ -210,73 +161,173 @@ $bp-desktop: 769px; // >= desktop
   }
 }
 
+// -------- Toggle (hamburger) — يدعم كلا الاسمين
+.greedy-nav__toggle,
+.masthead__menu-toggle {
+  display: none; // hidden on desktop, shown on mobile below
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  background: transparent;
+  color: $header-fg;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+
+  &:hover {
+    background: #f9fafb;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $brand-color;
+    outline-offset: 2px;
+  }
+
+  .hamburger {
+    position: relative;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 200ms ease, background 200ms ease;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 200ms ease, opacity 200ms ease, top 200ms ease, bottom 200ms ease;
+    }
+
+    &::before { top: -6px; }
+    &::after  { top:  6px; }
+  }
+}
+
 // -------- Mobile behavior
 @media (max-width: $bp-mobile) {
-  .greedy-nav {
-    // show toggle
-    .greedy-nav__toggle {
-      display: inline-flex;
+  // show toggle
+  .greedy-nav__toggle,
+  .masthead__menu-toggle {
+    display: inline-flex;
+  }
+
+  // menu is hidden by default on mobile
+  .greedy-nav .visible-links {
+    display: none;
+    position: absolute;
+    inset-inline: 0;
+    top: $header-height;
+    background: $header-bg;
+    padding: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    border-top: 1px solid $border-color;
+    box-shadow: $shadow-lg;
+
+    > li > a,
+    > li > button {
+      width: 100%;
+      justify-content: flex-start;
+      padding: 12px 14px;
+      border-radius: 10px;
     }
+  }
 
-    // menu is hidden by default on mobile
-    .visible-links {
-      display: none;
-      position: absolute;
-      inset-inline: 0; // full width in logical direction
-      top: $header-height;
-      background: $header-bg;
-      padding: 8px;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 4px;
-      border-top: 1px solid $border-color;
-      box-shadow: $shadow-lg;
+  // OPEN state (when .nav-open is added to .greedy-nav)
+  .greedy-nav.nav-open .visible-links {
+    display: flex;
+    z-index: 1001;
+  }
 
-      > li > a,
-      > li > button {
-        width: 100%;
-        justify-content: flex-start;
-        padding: 12px 14px;
-        border-radius: 10px;
-      }
+  // Hamburger morphs into X when open
+  .greedy-nav.nav-open .greedy-nav__toggle .hamburger,
+  .greedy-nav.nav-open .masthead__menu-toggle .hamburger {
+    background: transparent;
+
+    &::before {
+      transform: translateY(6px) rotate(45deg);
     }
-
-    // OPEN state (when .nav-open is added to .greedy-nav)
-    &.nav-open .visible-links {
-      display: flex;
-      z-index: 1001;
-    }
-
-    // Hamburger morphs into X when open
-    &.nav-open .greedy-nav__toggle .hamburger {
-      background: transparent;
-
-      &::before {
-        transform: translateY(6px) rotate(45deg);
-      }
-      &::after {
-        transform: translateY(-6px) rotate(-45deg);
-      }
+    &::after {
+      transform: translateY(-6px) rotate(-45deg);
     }
   }
 }
 
 // -------- Desktop behavior
 @media (min-width: $bp-desktop) {
-  .greedy-nav {
-    .visible-links {
-      display: flex;
-      position: static;
-      padding: 0;
-      background: transparent;
-      box-shadow: none;
-      border: 0;
-      flex-direction: row;
-      gap: 14px;
-    }
+  .greedy-nav .visible-links {
+    display: flex;
+    position: static;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    flex-direction: row;
+    gap: 14px;
+  }
 
-    .greedy-nav__toggle {
-      display: none;
+  .greedy-nav__toggle,
+  .masthead__menu-toggle {
+    display: none;
+  }
+}
+
+// -------- Dropdown menu
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+@media (min-width: $bp-desktop) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 6px 0;
+  top: 100%;
+  inset-inline-end: 0;
+  z-index: 1000;
+  min-width: 200px;
+  border-radius: 10px;
+
+  li {
+    list-style: none;
+
+    a {
+      display: block;
+      padding: 10px 14px;
+      color: $header-fg;
+      text-decoration: none;
+      border-radius: 8px;
+
+      &:hover,
+      &:focus {
+        background: #f5f7fb;
+        color: $brand-color;
+      }
     }
   }
 }
@@ -284,16 +335,18 @@ $bp-desktop: 769px; // >= desktop
 // -------- Reduced motion
 @media (prefers-reduced-motion: reduce) {
   .greedy-nav,
-  .greedy-nav * {
+  .greedy-nav *,
+  .dropdown-menu,
+  .greedy-nav__toggle,
+  .masthead__menu-toggle {
     transition: none !important;
   }
 }
 
-// -------- Optional: RTL niceties (if you set dir="rtl" on <html> or <body>)
+// -------- Optional: RTL niceties
 [dir="rtl"] {
   .visible-links > li > a,
   .visible-links > li > button {
-    // keep good spacing for RTL
     text-align: right;
   }
 }
