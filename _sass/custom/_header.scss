@@ -1,36 +1,15 @@
 // ==============================
-// Header (masthead) + Greedy Nav
+// Header + Greedy Nav
 // ==============================
 
-// -------- Variables
 $header-bg: #ffffff;
-$header-fg: #1f2937; // text primary
-$header-muted: #6b7280;
+$header-fg: #1f2937;
 $brand-color: #0d6efd;
 $border-color: #e5e7eb;
-$shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+$header-height: 64px;
 $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
 
-$header-height: 64px;
-$container-max: 1200px;
-
-$bp-mobile: 768px; // <= mobile
-$bp-desktop: 769px; // >= desktop
-
-// -------- A11y helpers
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-// -------- Header container
+// -------- Container
 .site-header {
   position: sticky;
   top: 0;
@@ -38,7 +17,6 @@ $bp-desktop: 769px; // >= desktop
   background: $header-bg;
   color: $header-fg;
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-  box-shadow: 0 0 0 rgba(0,0,0,0);
 
   &.with-shadow,
   body.scrolled & {
@@ -51,8 +29,8 @@ $bp-desktop: 769px; // >= desktop
   display: flex;
   align-items: center;
 
-  .masthead__inner {
-    max-width: $container-max;
+  .masthead__inner-wrap {
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding-inline: 16px;
@@ -63,290 +41,129 @@ $bp-desktop: 769px; // >= desktop
   }
 }
 
-// -------- Branding (logo + title)
-.site-branding {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
+// -------- Toggle button (الهاتف فقط)
+.masthead__menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  color: $header-fg;
+  font-size: 1.2rem;
+  padding: 6px 10px;
+  cursor: pointer;
 
-  .site-logo {
+  @media (max-width: 768px) {
     display: inline-flex;
-    align-items: center;
-
-    img,
-    svg {
-      display: block;
-      height: 36px;
-      width: auto;
-    }
-  }
-
-  .site-title {
-    font-weight: 700;
-    font-size: 1.125rem;
-    line-height: 1.2;
-    color: $header-fg;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &:hover,
-    &:focus {
-      color: $brand-color;
-    }
   }
 }
 
-// -------- Greedy Nav
-// Expected HTML structure:
-// <nav id="site-nav" class="greedy-nav">
-//   <button class="greedy-nav__toggle" aria-expanded="false" aria-controls="primary-menu"><span class="hamburger"></span></button>
-//   <ul id="primary-menu" class="visible-links">...</ul>
-// </nav>
-
+// -------- Navigation
 .greedy-nav {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
-  color: inherit;
 
-  // -------- Visible links (menu)
-  .visible-links {
+  ul.visible-links {
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex; // desktop default
+    display: flex;
     align-items: center;
     gap: 14px;
 
-    > li {
+    li {
       position: relative;
 
-      > a,
-      > button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+      a {
+        display: inline-block;
         padding: 8px 12px;
-        border-radius: 8px;
         color: $header-fg;
         text-decoration: none;
+        border-radius: 8px;
         font-weight: 500;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        transition: color 160ms ease, background 160ms ease;
 
         &:hover,
         &:focus {
           color: $brand-color;
-          background: #f5f7fb;
-        }
-
-        &.active,
-        &[aria-current="page"] {
-          color: $brand-color;
           background: rgba($brand-color, 0.08);
         }
+      }
+    }
 
-        &:focus-visible {
-          outline: 2px solid $brand-color;
-          outline-offset: 2px;
+    // القوائم المنسدلة
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      inset-inline-end: 0;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
+      min-width: 200px;
+      z-index: 1000;
+
+      li {
+        a {
+          display: block;
+          padding: 8px 14px;
+          color: $header-fg;
+
+          &:hover {
+            background: #f5f7fb;
+            color: $brand-color;
+          }
         }
       }
     }
-  }
-}
 
-// -------- Toggle (hamburger) — يدعم كلا الاسمين
-.greedy-nav__toggle,
-.masthead__menu-toggle {
-  display: none; // hidden on desktop, shown on mobile below
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  background: transparent;
-  color: $header-fg;
-  cursor: pointer;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
-
-  &:hover {
-    background: #f9fafb;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $brand-color;
-    outline-offset: 2px;
-  }
-
-  .hamburger {
-    position: relative;
-    width: 20px;
-    height: 2px;
-    background: currentColor;
-    border-radius: 2px;
-    transition: transform 200ms ease, background 200ms ease;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      inset-inline-start: 0;
-      width: 20px;
-      height: 2px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: transform 200ms ease, opacity 200ms ease, top 200ms ease, bottom 200ms ease;
-    }
-
-    &::before { top: -6px; }
-    &::after  { top:  6px; }
-  }
-}
-
-// -------- Mobile behavior
-@media (max-width: $bp-mobile) {
-  // show toggle
-  .greedy-nav__toggle,
-  .masthead__menu-toggle {
-    display: inline-flex;
-  }
-
-  // menu is hidden by default on mobile
-  .greedy-nav .visible-links {
-    display: none;
-    position: absolute;
-    inset-inline: 0;
-    top: $header-height;
-    background: $header-bg;
-    padding: 8px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 4px;
-    border-top: 1px solid $border-color;
-    box-shadow: $shadow-lg;
-
-    > li > a,
-    > li > button {
-      width: 100%;
-      justify-content: flex-start;
-      padding: 12px 14px;
-      border-radius: 10px;
-    }
-  }
-
-  // OPEN state (when .nav-open is added to .greedy-nav)
-  .greedy-nav.nav-open .visible-links {
-    display: flex;
-    z-index: 1001;
-  }
-
-  // Hamburger morphs into X when open
-  .greedy-nav.nav-open .greedy-nav__toggle .hamburger,
-  .greedy-nav.nav-open .masthead__menu-toggle .hamburger {
-    background: transparent;
-
-    &::before {
-      transform: translateY(6px) rotate(45deg);
-    }
-    &::after {
-      transform: translateY(-6px) rotate(-45deg);
-    }
-  }
-}
-
-// -------- Desktop behavior
-@media (min-width: $bp-desktop) {
-  .greedy-nav .visible-links {
-    display: flex;
-    position: static;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    border: 0;
-    flex-direction: row;
-    gap: 14px;
-  }
-
-  .greedy-nav__toggle,
-  .masthead__menu-toggle {
-    display: none;
-  }
-}
-
-// -------- Dropdown menu
-.dropdown {
-  position: relative;
-}
-
-.dropdown-toggle {
-  cursor: pointer;
-}
-
-@media (min-width: $bp-desktop) {
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-}
-
-.dropdown.open .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 6px 0;
-  top: 100%;
-  inset-inline-end: 0;
-  z-index: 1000;
-  min-width: 200px;
-  border-radius: 10px;
-
-  li {
-    list-style: none;
-
-    a {
+    .dropdown.open .dropdown-menu {
       display: block;
-      padding: 10px 14px;
-      color: $header-fg;
-      text-decoration: none;
-      border-radius: 8px;
+    }
 
-      &:hover,
-      &:focus {
-        background: #f5f7fb;
-        color: $brand-color;
+    @media screen and (min-width: 769px) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+  }
+
+  // الهاتف: إظهار القائمة عند النقر على زر القائمة
+  @media (max-width: 768px) {
+    &.nav-open .visible-links {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: $header-height;
+      inset-inline: 0;
+      background: $header-bg;
+      padding: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      z-index: 999;
+    }
+
+    .visible-links {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+
+      li a {
+        width: 100%;
+        text-align: right;
       }
     }
   }
 }
 
-// -------- Reduced motion
-@media (prefers-reduced-motion: reduce) {
-  .greedy-nav,
-  .greedy-nav *,
-  .dropdown-menu,
-  .greedy-nav__toggle,
-  .masthead__menu-toggle {
-    transition: none !important;
-  }
-}
-
-// -------- Optional: RTL niceties
+// -------- RTL تعديل بسيط للتنسيق من اليمين
 [dir="rtl"] {
-  .visible-links > li > a,
-  .visible-links > li > button {
+  .greedy-nav ul.visible-links {
+    flex-direction: row-reverse;
+  }
+
+  .dropdown-menu {
+    inset-inline-start: 0;
+    inset-inline-end: auto;
     text-align: right;
   }
 }
