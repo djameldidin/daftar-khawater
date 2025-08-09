@@ -5120,7 +5120,7 @@ body {
   line-height: 1.8;
   font-size: 1rem;
   color: #333;
-  background-color: #fff;
+  background-color: #f7f8fa;
   margin: 0;
   padding: 0;
 }
@@ -5236,6 +5236,15 @@ nav,
   .icon-only-mobile {
     display: none;
   }
+}
+
+/* ==============================
+   تحسين قابلية قراءة المحتوى
+   ============================== */
+.page__content {
+  max-width: 800px; /* تحديد أقصى عرض للمحتوى، يمكنكِ تعديل هذا الرقم كما ترين مناسباً */
+  margin-left: auto; /* هذه الأسطر تقوم بتوسيط الحاوية في الصفحة */
+  margin-right: auto;
 }
 
 /* ==============================
