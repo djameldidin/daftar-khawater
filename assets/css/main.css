@@ -5239,7 +5239,7 @@ nav,
 }
 
 /* ==============================
-   Header + Navigation
+   Header & Navigation Bar
    ============================== */
 .site-header {
   position: sticky;
@@ -5252,7 +5252,7 @@ nav,
 
 .masthead__inner-wrap {
   display: flex;
-  justify-content: center; /* توسيط القائمة في الهيدر */
+  justify-content: center; /* توسيط القائمة */
   align-items: center;
   height: 64px;
   max-width: 1200px;
@@ -5260,29 +5260,26 @@ nav,
   padding: 0 1rem;
 }
 
-.greedy-nav {
-  width: 100%;
-}
-
-.visible-links {
+/* --- Navigation Links --- */
+.greedy-nav .visible-links {
   display: flex;
   align-items: center;
-  justify-content: center; /* توسيط العناصر */
-  flex-wrap: wrap; /* السماح بالتفاف العناصر عند ضيق المساحة */
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0.5rem; /* تقليل المسافة بين العناصر */
+  gap: 0.5rem;
 }
 
 .visible-links a {
   display: block;
-  padding: 0.5rem 0.75rem; /* تقليل الحشو قليلاً */
+  padding: 0.5rem 0.6rem; /* تقليل الحشو الجانبي */
   color: #333;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem; /* <<--- تقليل حجم الخط كما اقترحتِ */
+  white-space: nowrap; /* منع التفاف النص في الرابط */
 }
 
 .visible-links a:hover {
@@ -5299,7 +5296,7 @@ nav,
   display: none;
   position: absolute;
   top: 100%;
-  right: 0; /* يبدأ من اليمين */
+  right: 0;
   background-color: #ffffff;
   min-width: 200px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -5309,14 +5306,9 @@ nav,
   list-style: none;
 }
 
-.dropdown-menu a {
-  width: 100%;
-  text-align: right;
-}
-
-/* إظهار القائمة عند مرور الماوس (للكمبيوتر فقط) */
+/* ✨ إظهار القائمة عند مرور الماوس (للكمبيوتر فقط) ✨ */
 @media (min-width: 769px) {
-  .dropdown:hover .dropdown-menu {
+  .dropdown:hover > .dropdown-menu {
     display: block;
   }
 }
@@ -5325,29 +5317,32 @@ nav,
   display: block;
 }
 
-/* --- Mobile Menu --- */
+/* --- Mobile Menu Button & Layout --- */
 .masthead__menu-toggle {
   display: none; /* إخفاء زر الهاتف افتراضياً */
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  color: #333;
 }
 
-@media (max-width: 1024px) { /* تغيير نقطة التحول لتظهر قائمة الهاتف مبكراً */
+@media (max-width: 960px) { /* تغيير نقطة التحول لتظهر قائمة الهاتف مبكراً */
+  .masthead__inner-wrap {
+    justify-content: flex-end; /* وضع الزر في أقصى اليمين */
+  }
   .masthead__menu-toggle {
     display: block;
-    position: absolute; /* وضعه في زاوية الهيدر */
-    right: 1rem;
   }
   .visible-links {
     display: none;
     flex-direction: column;
+    align-items: stretch;
     position: absolute;
     top: 64px;
     right: 0;
+    left: 0;
     background: white;
-    width: 100%;
     padding: 1rem;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border-top: 1px solid #e5e7eb;

@@ -97,7 +97,7 @@
   </ul>
 </nav>
 
-    <header class="site-header with-shadow">
+    <header class="site-header">
   <div class="masthead__inner-wrap">
     <nav id="site-nav" class="greedy-nav">
       <button class="masthead__menu-toggle">
@@ -127,7 +127,7 @@
     // تفعيل القوائم المنسدلة عند النقر في الهاتف
     document.querySelectorAll('.dropdown-toggle').forEach(item => {
       item.addEventListener('click', event => {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 960) {
           event.preventDefault();
           item.parentElement.classList.toggle('open');
         }
