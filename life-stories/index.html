@@ -87,102 +87,42 @@
   </ul>
 </nav>
 
-    <header class="masthead">
+    <header class="site-header with-shadow">
   <div class="masthead__inner-wrap">
-    <button class="masthead__menu-toggle" aria-label="فتح القائمة" aria-controls="primary-menu" aria-expanded="false">
-      <span class="fa fa-bars" aria-hidden="true"></span>
-    </button>
+    <nav id="site-nav" class="greedy-nav">
+      <button class="masthead__menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
 
-    <nav id="site-nav" class="greedy-nav" role="navigation" aria-label="التنقل الرئيسي">
-      <ul id="primary-menu" class="visible-links">
-        
-          
-            <li><a href="/hibr-shafaf/"><span class='icon-only-mobile'>🏠</span> الرئيسية  </a></li>
-          
-        
-          
-            <li><a href="/hibr-shafaf/articles/"><span class='icon-only-mobile'>📂</span> المقالات </a></li>
-          
-        
-          
-            <li><a href="/hibr-shafaf/thoughts/"><span class='icon-only-mobile'>🖋️</span> خواطر </a></li>
-          
-        
-          
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                <span class='icon-only-mobile'>📚</span> دفتر القراء
-              </a>
-              <ul class="dropdown-menu">
-                
-                  <li><a href="/hibr-shafaf/messages-des-lecteurs/">💌 رسائل القراء</a></li>
-                
-                  <li><a href="/hibr-shafaf/espace-silencieux/">✍️ مساحة صامتة</a></li>
-                
-                  <li><a href="/hibr-shafaf/question-du-mois/">✨ سؤال الشهر</a></li>
-                
-              </ul>
-            </li>
-          
-        
-          
-            <li><a href="/hibr-shafaf/life-stories/"><span class='icon-only-mobile'>📖</span> قصص من الحياة</a></li>
-          
-        
-          
-            <li><a href="/hibr-shafaf/pause-detente/"><span class='icon-only-mobile'>🎈</span> مساحة الترفيه</a></li>
-          
-        
-          
-            <li><a href="/hibr-shafaf/ressources-gratuites/"><span class='icon-only-mobile'>🎁</span> أدوات مجانيه</a></li>
-          
-        
-          
-            <li><a href="/hibr-shafaf/about/"><span class='icon-only-mobile'>👤</span> عني</a></li>
-          
-        
-      </ul>
+      <ul class="visible-links"><li><a href="/hibr-shafaf/"><span class='icon-only-mobile'>🏠</span> الرئيسية  </a></li><li><a href="/hibr-shafaf/articles/"><span class='icon-only-mobile'>📂</span> المقالات </a></li><li><a href="/hibr-shafaf/thoughts/"><span class='icon-only-mobile'>🖋️</span> خواطر </a></li><li class="dropdown">
+              <a href="#" class="dropdown-toggle"><span class='icon-only-mobile'>📚</span> دفتر القراء</a>
+              <ul class="dropdown-menu"><li><a href="/hibr-shafaf/messages-des-lecteurs/">💌 رسائل القراء</a></li><li><a href="/hibr-shafaf/espace-silencieux/">✍️ مساحة صامتة</a></li><li><a href="/hibr-shafaf/question-du-mois/">✨ سؤال الشهر</a></li></ul>
+            </li><li><a href="/hibr-shafaf/life-stories/"><span class='icon-only-mobile'>📖</span> قصص من الحياة</a></li><li><a href="/hibr-shafaf/pause-detente/"><span class='icon-only-mobile'>🎈</span> مساحة الترفيه</a></li><li><a href="/hibr-shafaf/ressources-gratuites/"><span class='icon-only-mobile'>🎁</span> أدوات مجانيه</a></li><li><a href="/hibr-shafaf/about/"><span class='icon-only-mobile'>👤</span> عني</a></li></ul>
     </nav>
   </div>
 </header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const nav = document.querySelector(".greedy-nav");
-    const toggleBtn = document.querySelector(".masthead__menu-toggle");
-    const primaryMenu = document.getElementById("primary-menu");
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.querySelector('.masthead__menu-toggle');
+    const nav = document.querySelector('.greedy-nav');
 
-    // فتح/إغلاق قائمة الهاتف
-    if (toggleBtn && nav) {
-      toggleBtn.addEventListener("click", function () {
-        const isOpen = nav.classList.toggle("nav-open");
-        toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    // تفعيل زر القائمة في الهاتف
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
       });
     }
 
-    // تفعيل القوائم الفرعية بالنقر على الهاتف فقط
-    if (primaryMenu) {
-      primaryMenu.querySelectorAll(".dropdown > .dropdown-toggle").forEach(function (anchor) {
-        anchor.addEventListener("click", function (e) {
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            e.preventDefault();
-            const li = this.parentElement;
-            const expanded = li.classList.toggle("open");
-            this.setAttribute("aria-expanded", expanded ? "true" : "false");
-          }
-        });
+    // تفعيل القوائم المنسدلة عند النقر في الهاتف
+    document.querySelectorAll('.dropdown-toggle').forEach(item => {
+      item.addEventListener('click', event => {
+        if (window.innerWidth <= 768) {
+          event.preventDefault();
+          item.parentElement.classList.toggle('open');
+        }
       });
-
-      // إغلاق القائمة بعد اختيار رابط (تحسين تجربة الهاتف)
-      primaryMenu.querySelectorAll('a[href]:not(.dropdown-toggle)').forEach(function (a) {
-        a.addEventListener("click", function () {
-          if (window.matchMedia("(max-width: 768px)").matches && nav.classList.contains("nav-open")) {
-            nav.classList.remove("nav-open");
-            toggleBtn && toggleBtn.setAttribute("aria-expanded", "false");
-          }
-        });
-      });
-    }
+    });
   });
 </script>
 
