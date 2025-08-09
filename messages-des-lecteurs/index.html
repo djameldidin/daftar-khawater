@@ -89,12 +89,12 @@
 
     <header class="site-header">
   <div class="masthead__inner-wrap">
-    <nav id="site-nav" class="greedy-nav">
-      <button class="masthead__menu-toggle" aria-label="Toggle Menu">
-        <i class="fas fa-bars"></i>
-      </button>
+    <button class="nav-toggle" aria-label="Toggle Menu">
+      <i class="fas fa-bars"></i>
+    </button>
 
-      <ul class="visible-links"><li><a href="/hibr-shafaf/"><span class='icon-only-mobile'>🏠</span> الرئيسية  </a></li><li><a href="/hibr-shafaf/articles/"><span class='icon-only-mobile'>📂</span> المقالات </a></li><li><a href="/hibr-shafaf/thoughts/"><span class='icon-only-mobile'>🖋️</span> خواطر </a></li><li class="dropdown">
+    <nav class="site-nav">
+      <ul class="nav-links"><li><a href="/hibr-shafaf/"><span class='icon-only-mobile'>🏠</span> الرئيسية  </a></li><li><a href="/hibr-shafaf/articles/"><span class='icon-only-mobile'>📂</span> المقالات </a></li><li><a href="/hibr-shafaf/thoughts/"><span class='icon-only-mobile'>🖋️</span> خواطر </a></li><li class="dropdown">
               <a href="#" class="dropdown-toggle"><span class='icon-only-mobile'>📚</span> دفتر القراء</a>
               <ul class="dropdown-menu"><li><a href="/hibr-shafaf/messages-des-lecteurs/">💌 رسائل القراء</a></li><li><a href="/hibr-shafaf/espace-silencieux/">✍️ مساحة صامتة</a></li><li><a href="/hibr-shafaf/question-du-mois/">✨ سؤال الشهر</a></li></ul>
             </li><li><a href="/hibr-shafaf/life-stories/"><span class='icon-only-mobile'>📖</span> قصص من الحياة</a></li><li><a href="/hibr-shafaf/pause-detente/"><span class='icon-only-mobile'>🎈</span> مساحة الترفيه</a></li><li><a href="/hibr-shafaf/ressources-gratuites/"><span class='icon-only-mobile'>🎁</span> أدوات مجانيه</a></li><li><a href="/hibr-shafaf/about/"><span class='icon-only-mobile'>👤</span> عني</a></li></ul>
@@ -104,53 +104,31 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const nav = document.querySelector('.greedy-nav');
-    const toggleBtn = document.querySelector('.masthead__menu-toggle');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-    // 1. تفعيل زر القائمة في الهاتف
-    if (toggleBtn && nav) {
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // منع انتشار النقر
-        nav.classList.toggle('nav-open');
+    // فتح وإغلاق قائمة الهاتف
+    if (navToggle) {
+      navToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('nav-open');
       });
     }
 
-    // 2. تفعيل القوائم المنسدلة عند النقر (يعمل على كل الأجهزة)
+    // تفعيل القوائم الفرعية بالنقر (للهاتف)
     document.querySelectorAll('.dropdown-toggle').forEach(item => {
-      item.addEventListener('click', event => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        // إغلاق أي قائمة منسدلة أخرى مفتوحة
-        document.querySelectorAll('.dropdown.open').forEach(openDropdown => {
-          if (openDropdown !== item.parentElement) {
-            openDropdown.classList.remove('open');
-          }
-        });
-
-        item.parentElement.classList.toggle('open');
-      });
-    });
-
-    // 3. إغلاق القوائم عند النقر في أي مكان آخر في الصفحة
-    document.addEventListener('click', function(e) {
-      if (nav && !nav.contains(e.target)) {
-        nav.classList.remove('nav-open');
-      }
-      document.querySelectorAll('.dropdown.open').forEach(openDropdown => {
-        if (!openDropdown.contains(e.target)) {
-          openDropdown.classList.remove('open');
+      item.addEventListener('click', function(event) {
+        if (window.innerWidth <= 1024) {
+          event.preventDefault();
+          this.parentElement.classList.toggle('open');
         }
       });
     });
 
-    // 4. إغلاق القائمة الرئيسية عند اختيار رابط في وضع الهاتف
-    document.querySelectorAll('.visible-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 1024 && nav.classList.contains('nav-open')) {
-           if (!link.classList.contains('dropdown-toggle')) {
-            nav.classList.remove('nav-open');
-          }
+    // إغلاق قائمة الهاتف عند النقر على أي رابط
+    document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 1024) {
+          navLinks.classList.remove('nav-open');
         }
       });
     });
