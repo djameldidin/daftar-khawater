@@ -5252,12 +5252,13 @@ nav,
 
 .masthead__inner-wrap {
   display: flex;
-  justify-content: center; /* توسيط القائمة */
+  justify-content: center;
   align-items: center;
   height: 64px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  position: relative; /* ضروري لوضع زر الهاتف */
 }
 
 /* --- Navigation Links --- */
@@ -5273,13 +5274,14 @@ nav,
 
 .visible-links a {
   display: block;
-  padding: 0.5rem 0.6rem; /* تقليل الحشو الجانبي */
+  padding: 0.5rem 0.75rem;
   color: #333;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
-  font-size: 0.9rem; /* <<--- تقليل حجم الخط كما اقترحتِ */
-  white-space: nowrap; /* منع التفاف النص في الرابط */
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .visible-links a:hover {
@@ -5306,20 +5308,25 @@ nav,
   list-style: none;
 }
 
-/* ✨ إظهار القائمة عند مرور الماوس (للكمبيوتر فقط) ✨ */
-@media (min-width: 769px) {
+.dropdown-menu a {
+  width: 100%;
+  text-align: right;
+}
+
+/* إظهار القائمة الفرعية عند مرور الماوس (للكمبيوتر) */
+@media (min-width: 961px) {
   .dropdown:hover > .dropdown-menu {
     display: block;
   }
 }
-/* إظهار القائمة عند النقر (للهاتف) */
+/* إظهار القائمة الفرعية عند النقر (لكل الأجهزة) */
 .dropdown.open .dropdown-menu {
   display: block;
 }
 
-/* --- Mobile Menu Button & Layout --- */
+/* --- Mobile Menu --- */
 .masthead__menu-toggle {
-  display: none; /* إخفاء زر الهاتف افتراضياً */
+  display: none;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -5327,7 +5334,7 @@ nav,
   color: #333;
 }
 
-@media (max-width: 960px) { /* تغيير نقطة التحول لتظهر قائمة الهاتف مبكراً */
+@media (max-width: 960px) {
   .masthead__inner-wrap {
     justify-content: flex-end; /* وضع الزر في أقصى اليمين */
   }
@@ -5335,7 +5342,7 @@ nav,
     display: block;
   }
   .visible-links {
-    display: none;
+    display: none; /* ✨ تأكيد أن القائمة مغلقة افتراضياً ✨ */
     flex-direction: column;
     align-items: stretch;
     position: absolute;
@@ -5348,7 +5355,7 @@ nav,
     border-top: 1px solid #e5e7eb;
   }
   .greedy-nav.nav-open .visible-links {
-    display: flex;
+    display: flex; /* إظهار القائمة فقط عند النقر على الزر */
   }
 }
 /* ---------- تنسيق صفحة الأرشيف ---------- */
