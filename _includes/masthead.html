@@ -1,68 +1,50 @@
-<header class="masthead">
+<header class="site-header with-shadow">
   <div class="masthead__inner-wrap">
-    <button class="masthead__menu-toggle" aria-label="فتح القائمة" aria-controls="primary-menu" aria-expanded="false">
-      <span class="fa fa-bars" aria-hidden="true"></span>
-    </button>
+    <nav id="site-nav" class="greedy-nav">
+      <button class="masthead__menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
 
-    <nav id="site-nav" class="greedy-nav" role="navigation" aria-label="التنقل الرئيسي">
-      <ul id="primary-menu" class="visible-links">
-        {% for link in site.data.navigation.main %}
-          {% if link.children %}
+      <ul class="visible-links">
+        {%- for link in site.data.navigation.main -%}
+          {%- if link.children -%}
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                {{ link.title }}
-              </a>
+              <a href="#" class="dropdown-toggle">{{ link.title }}</a>
               <ul class="dropdown-menu">
-                {% for child in link.children %}
+                {%- for child in link.children -%}
                   <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
-                {% endfor %}
+                {%- endfor -%}
               </ul>
             </li>
-          {% else %}
+          {%- else -%}
             <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
-          {% endif %}
-        {% endfor %}
+          {%- endif -%}
+        {%- endfor -%}
       </ul>
     </nav>
   </div>
 </header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const nav = document.querySelector(".greedy-nav");
-    const toggleBtn = document.querySelector(".masthead__menu-toggle");
-    const primaryMenu = document.getElementById("primary-menu");
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.querySelector('.masthead__menu-toggle');
+    const nav = document.querySelector('.greedy-nav');
 
-    // فتح/إغلاق قائمة الهاتف
-    if (toggleBtn && nav) {
-      toggleBtn.addEventListener("click", function () {
-        const isOpen = nav.classList.toggle("nav-open");
-        toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    // تفعيل زر القائمة في الهاتف
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        nav.classList.toggle('nav-open');
       });
     }
 
-    // تفعيل القوائم الفرعية بالنقر على الهاتف فقط
-    if (primaryMenu) {
-      primaryMenu.querySelectorAll(".dropdown > .dropdown-toggle").forEach(function (anchor) {
-        anchor.addEventListener("click", function (e) {
-          if (window.matchMedia("(max-width: 768px)").matches) {
-            e.preventDefault();
-            const li = this.parentElement;
-            const expanded = li.classList.toggle("open");
-            this.setAttribute("aria-expanded", expanded ? "true" : "false");
-          }
-        });
+    // تفعيل القوائم المنسدلة عند النقر في الهاتف
+    document.querySelectorAll('.dropdown-toggle').forEach(item => {
+      item.addEventListener('click', event => {
+        if (window.innerWidth <= 768) {
+          event.preventDefault();
+          item.parentElement.classList.toggle('open');
+        }
       });
-
-      // إغلاق القائمة بعد اختيار رابط (تحسين تجربة الهاتف)
-      primaryMenu.querySelectorAll('a[href]:not(.dropdown-toggle)').forEach(function (a) {
-        a.addEventListener("click", function () {
-          if (window.matchMedia("(max-width: 768px)").matches && nav.classList.contains("nav-open")) {
-            nav.classList.remove("nav-open");
-            toggleBtn && toggleBtn.setAttribute("aria-expanded", "false");
-          }
-        });
-      });
-    }
+    });
   });
 </script>

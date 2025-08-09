@@ -1,209 +1,123 @@
-// ==============================
-// Header + Greedy Nav
-// ==============================
+/* ==============================
+   Header + Navigation
+   ============================== */
 
-$header-bg: #ffffff;
-$header-fg: #1f2937;
-$brand-color: #0d6efd;
-$border-color: #e5e7eb;
-$header-height: 64px;
-$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-
-// -------- Container
 .site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: $header-bg;
-  color: $header-fg;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-
-  &.with-shadow,
-  body.scrolled & {
-    box-shadow: $shadow-md;
-  }
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.masthead {
-  height: $header-height;
+.masthead__inner-wrap {
   display: flex;
+  justify-content: center; /* توسيط القائمة في الهيدر */
   align-items: center;
-
-  .masthead__inner-wrap {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding-inline: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
+  height: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-// -------- Toggle button (الهاتف فقط)
-.masthead__menu-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  color: $header-fg;
-  font-size: 1.2rem;
-  padding: 6px 10px;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-// -------- Navigation
 .greedy-nav {
-  position: relative;
+  width: 100%;
+}
+
+.visible-links {
   display: flex;
   align-items: center;
-
-  ul.visible-links {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex; // desktop default
-    align-items: center;
-    gap: 14px;
-
-    li {
-      position: relative;
-
-      a {
-        display: inline-block;
-        padding: 8px 12px;
-        color: $header-fg;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: 500;
-
-        &:hover,
-        &:focus {
-          color: $brand-color;
-          background: rgba($brand-color, 0.08);
-        }
-      }
-    }
-
-    // القوائم المنسدلة
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      inset-inline-end: 0;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 0.5rem 0;
-      min-width: 200px;
-      z-index: 2001;
-
-      li a {
-        display: block;
-        padding: 8px 14px;
-        color: $header-fg;
-
-        &:hover {
-          background: #f5f7fb;
-          color: $brand-color;
-        }
-      }
-    }
-
-    .dropdown.open .dropdown-menu {
-      display: block;
-    }
-
-    @media screen and (min-width: 769px) {
-      .dropdown:hover .dropdown-menu {
-        display: block;
-      }
-    }
-  }
-
-  // الهاتف: إظهار القائمة عند النقر على زر القائمة
-  @media (max-width: 768px) {
-    .visible-links {
-      display: none !important; // تأكيد إخفاء الافتراضي
-      flex-direction: column;
-      align-items: stretch;
-
-      li a {
-        width: 100%;
-        text-align: right;
-      }
-    }
-
-    &.nav-open .visible-links {
-      display: flex !important;         // أولوية أعلى ضد أي تعارض
-      position: absolute;
-      top: $header-height;
-      inset-inline-end: 0;              // التصاق باليمين (RTL-aware)
-      background: $header-bg;
-      padding: 10px;
-      gap: 6px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-      border: 1px solid $border-color;
-      border-top: none;
-      z-index: 2000;                    // أعلى من محتوى الهيدر
-      min-width: 240px;
-      max-width: 90vw;
-      border-radius: 10px;
-    }
-  }
+  justify-content: center; /* توسيط العناصر */
+  flex-wrap: wrap; /* السماح بالتفاف العناصر عند ضيق المساحة */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem; /* تقليل المسافة بين العناصر */
 }
 
-// -------- ضمان الظهور على الديسكتوب حتى لو تعارض الثيم
+.visible-links a {
+  display: block;
+  padding: 0.5rem 0.75rem; /* تقليل الحشو قليلاً */
+  color: #333;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.visible-links a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #d67e2c;
+}
+
+/* --- Dropdown Menu --- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* يبدأ من اليمين */
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1001;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.dropdown-menu a {
+  width: 100%;
+  text-align: right;
+}
+
+/* إظهار القائمة عند مرور الماوس (للكمبيوتر فقط) */
 @media (min-width: 769px) {
-  .greedy-nav .visible-links {
-    display: flex !important;
-    position: static;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    border: 0;
-    flex-direction: row;
-    gap: 14px;
-  }
-
-  .masthead__menu-toggle { display: none !important; }
-}
-
-// -------- RTL
-[dir="rtl"] {
-  .greedy-nav ul.visible-links {
-    flex-direction: row-reverse;
-  }
-
-  .dropdown-menu {
-    inset-inline-start: 0;
-    inset-inline-end: auto;
-    text-align: right;
+  .dropdown:hover .dropdown-menu {
+    display: block;
   }
 }
-@media (max-width: 768px) {
-  nav.greedy-nav.nav-open ul.visible-links {
-    display: flex !important;
+
+/* إظهار القائمة عند النقر (للهاتف) */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+
+/* --- Mobile Menu --- */
+.masthead__menu-toggle {
+  display: none; /* إخفاء زر الهاتف افتراضياً */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) { /* تغيير نقطة التحول لتظهر قائمة الهاتف مبكراً */
+  .masthead__menu-toggle {
+    display: block;
+    position: absolute; /* وضعه في زاوية الهيدر */
+    right: 1rem;
+  }
+
+  .visible-links {
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 64px;
-    inset-inline-end: 0;
-    background: #fff;
-    padding: 12px;
-    z-index: 1000;
-    border-radius: 10px;
+    right: 0;
+    background: white;
+    width: 100%;
+    padding: 1rem;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-top: 1px solid #e5e7eb;
+  }
 
-    li a {
-      width: 100%;
-      text-align: right;
-    }
+  .greedy-nav.nav-open .visible-links {
+    display: flex;
   }
 }
