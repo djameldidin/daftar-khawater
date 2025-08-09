@@ -5239,7 +5239,7 @@ nav,
 }
 
 /* ==============================
-   Header & Navigation Bar
+   Header & Navigation Bar - Final Version
    ============================== */
 .site-header {
   position: sticky;
@@ -5258,11 +5258,15 @@ nav,
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  position: relative; /* ضروري لوضع زر الهاتف */
+  position: relative;
+}
+
+.greedy-nav {
+  width: 100%;
 }
 
 /* --- Navigation Links --- */
-.greedy-nav .visible-links {
+.visible-links {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5306,6 +5310,8 @@ nav,
   border-radius: 8px;
   padding: 0.5rem 0;
   list-style: none;
+  border: 1px solid #e5e7eb;
+  margin-top: 8px; /* إضافة مسافة صغيرة تحت الهيدر */
 }
 
 .dropdown-menu a {
@@ -5313,14 +5319,14 @@ nav,
   text-align: right;
 }
 
-/* إظهار القائمة الفرعية عند مرور الماوس (للكمبيوتر) */
-@media (min-width: 961px) {
-  .dropdown:hover > .dropdown-menu {
+/* ✨ إظهار القائمة عند مرور الماوس (للكمبيوتر فقط) ✨ */
+@media (min-width: 1025px) {
+  .greedy-nav .dropdown:hover > .dropdown-menu {
     display: block;
   }
 }
-/* إظهار القائمة الفرعية عند النقر (لكل الأجهزة) */
-.dropdown.open .dropdown-menu {
+/* إظهار القائمة عند النقر (للهاتف) */
+.greedy-nav .dropdown.open .dropdown-menu {
   display: block;
 }
 
@@ -5332,27 +5338,31 @@ nav,
   font-size: 1.5rem;
   cursor: pointer;
   color: #333;
+  position: absolute;
+  right: 1rem; /* ✨ تثبيت الزر في اليمين ✨ */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-@media (max-width: 960px) {
-  .masthead__inner-wrap {
-    justify-content: flex-end; /* وضع الزر في أقصى اليمين */
-  }
+/* نقطة التحول الجديدة للشاشات المتوسطة والصغيرة */
+@media (max-width: 1024px) {
   .masthead__menu-toggle {
-    display: block;
+    display: block; /* إظهار زر الهاتف */
   }
   .visible-links {
-    display: none; /* ✨ تأكيد أن القائمة مغلقة افتراضياً ✨ */
+    display: none; /* ✨ إخفاء القائمة افتراضياً ✨ */
     flex-direction: column;
     align-items: stretch;
     position: absolute;
     top: 64px;
     right: 0;
-    left: 0;
+    width: 95%;
+    max-width: 320px; /* تحديد عرض أقصى للقائمة */
     background: white;
     padding: 1rem;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-top: 1px solid #e5e7eb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
   }
   .greedy-nav.nav-open .visible-links {
     display: flex; /* إظهار القائمة فقط عند النقر على الزر */
