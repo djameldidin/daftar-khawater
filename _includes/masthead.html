@@ -1,8 +1,8 @@
 <header class="site-header">
   <div class="masthead__inner-wrap">
     <nav id="site-nav" class="greedy-nav">
-      <button class="masthead__menu-toggle">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+      <button class="masthead__menu-toggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
       </button>
 
       <ul class="visible-links">
@@ -31,26 +31,47 @@
     const toggleBtn = document.querySelector('.masthead__menu-toggle');
 
     // 1. تفعيل زر القائمة في الهاتف
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
+    if (toggleBtn && nav) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // منع انتشار النقر
         nav.classList.toggle('nav-open');
       });
     }
 
-    // 2. تفعيل القوائم المنسدلة عند النقر على كل الأجهزة
+    // 2. تفعيل القوائم المنسدلة عند النقر (يعمل على كل الأجهزة)
     document.querySelectorAll('.dropdown-toggle').forEach(item => {
       item.addEventListener('click', event => {
         event.preventDefault();
+        event.stopPropagation();
+
+        // إغلاق أي قائمة منسدلة أخرى مفتوحة
+        document.querySelectorAll('.dropdown.open').forEach(openDropdown => {
+          if (openDropdown !== item.parentElement) {
+            openDropdown.classList.remove('open');
+          }
+        });
+
         item.parentElement.classList.toggle('open');
       });
     });
 
-    // 3. إغلاق القائمة المنسدلة الرئيسية عند النقر على رابط بداخلها في وضع الهاتف
+    // 3. إغلاق القوائم عند النقر في أي مكان آخر في الصفحة
+    document.addEventListener('click', function(e) {
+      if (nav && !nav.contains(e.target)) {
+        nav.classList.remove('nav-open');
+      }
+      document.querySelectorAll('.dropdown.open').forEach(openDropdown => {
+        if (!openDropdown.contains(e.target)) {
+          openDropdown.classList.remove('open');
+        }
+      });
+    });
+
+    // 4. إغلاق القائمة الرئيسية عند اختيار رابط في وضع الهاتف
     document.querySelectorAll('.visible-links a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth <= 960 && nav.classList.contains('nav-open')) {
-          // لا تغلق القائمة إذا كان الرابط هو زر قائمة فرعية
-          if (!link.classList.contains('dropdown-toggle')) {
+        if (window.innerWidth <= 1024 && nav.classList.contains('nav-open')) {
+           if (!link.classList.contains('dropdown-toggle')) {
             nav.classList.remove('nav-open');
           }
         }
