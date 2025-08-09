@@ -54,6 +54,8 @@ $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
 
   @media (max-width: 768px) {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -67,7 +69,7 @@ $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex;
+    display: flex; // desktop default
     align-items: center;
     gap: 14px;
 
@@ -101,18 +103,16 @@ $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       padding: 0.5rem 0;
       min-width: 200px;
-      z-index: 1000;
+      z-index: 2001;
 
-      li {
-        a {
-          display: block;
-          padding: 8px 14px;
-          color: $header-fg;
+      li a {
+        display: block;
+        padding: 8px 14px;
+        color: $header-fg;
 
-          &:hover {
-            background: #f5f7fb;
-            color: $brand-color;
-          }
+        &:hover {
+          background: #f5f7fb;
+          color: $brand-color;
         }
       }
     }
@@ -130,20 +130,8 @@ $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
 
   // الهاتف: إظهار القائمة عند النقر على زر القائمة
   @media (max-width: 768px) {
-    &.nav-open .visible-links {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: $header-height;
-      inset-inline: 0;
-      background: $header-bg;
-      padding: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      z-index: 999;
-    }
-
     .visible-links {
-      display: none;
+      display: none !important; // تأكيد إخفاء الافتراضي
       flex-direction: column;
       align-items: stretch;
 
@@ -152,10 +140,43 @@ $shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
         text-align: right;
       }
     }
+
+    &.nav-open .visible-links {
+      display: flex !important;         // أولوية أعلى ضد أي تعارض
+      position: absolute;
+      top: $header-height;
+      inset-inline-end: 0;              // التصاق باليمين (RTL-aware)
+      background: $header-bg;
+      padding: 10px;
+      gap: 6px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+      border: 1px solid $border-color;
+      border-top: none;
+      z-index: 2000;                    // أعلى من محتوى الهيدر
+      min-width: 240px;
+      max-width: 90vw;
+      border-radius: 10px;
+    }
   }
 }
 
-// -------- RTL تعديل بسيط للتنسيق من اليمين
+// -------- ضمان الظهور على الديسكتوب حتى لو تعارض الثيم
+@media (min-width: 769px) {
+  .greedy-nav .visible-links {
+    display: flex !important;
+    position: static;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .masthead__menu-toggle { display: none !important; }
+}
+
+// -------- RTL
 [dir="rtl"] {
   .greedy-nav ul.visible-links {
     flex-direction: row-reverse;
