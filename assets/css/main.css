@@ -5393,6 +5393,24 @@ nav,
   text-align: right;
 }
 
+@media (max-width: 768px) {
+  nav.greedy-nav.nav-open ul.visible-links {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    inset-inline-end: 0;
+    background: #fff;
+    padding: 12px;
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  nav.greedy-nav.nav-open ul.visible-links li a {
+    width: 100%;
+    text-align: right;
+  }
+}
 /* ---------- تنسيق صفحة الأرشيف ---------- */
 .archive {
   text-align: right;
