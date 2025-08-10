@@ -5149,85 +5149,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /* ---------- ترتيب عناصر Flex ---------- */
+/* ملاحظة: تم الإبقاء على القواعد الضرورية فقط */
 nav,
-.greedy-nav,
-.nav__list,
 .author__urls,
 .dropdown-menu {
   flex-direction: row-reverse !important;
 }
 
-/* ---------- التنقل ---------- */
-.masthead__menu-toggle {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: #d67e2c;
-  cursor: pointer;
-}
-
-.greedy-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.greedy-nav.nav-open .visible-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.visible-links > li {
-  list-style: none;
-  margin: 0.5rem 0;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
-  z-index: 99;
-}
-
-.dropdown.open .dropdown-menu {
-  display: block;
-}
-
-.dropdown-menu li {
-  padding: 0.25rem 1rem;
-}
-
-.dropdown-menu li a {
-  color: #333;
-  font-size: 0.95rem;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* ---------- الهواتف المحمولة ---------- */
-@media screen and (max-width: 768px) {
-  .greedy-nav {
-    flex-direction: column;
-  }
-  .visible-links {
-    flex-direction: column;
-  }
-  .dropdown:hover .dropdown-menu {
-    display: none;
-  }
-  .dropdown.open .dropdown-menu {
-    display: block;
-  }
-  .masthead__menu-toggle {
-    display: inline-block;
-  }
-}
 /* ---------- أيقونات تظهر فقط على الهاتف ---------- */
 .icon-only-mobile {
   display: inline;
@@ -5385,6 +5313,47 @@ nav,
     margin-top: 0.5rem;
   }
 }
+/* زر القائمة الفرعية */
+.dropdown-toggle {
+  background: none;
+  border: none;
+  padding: 0 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: inherit;
+  transition: transform 0.2s ease;
+  /* إخفاء الزر في الشاشات الكبيرة */
+}
+@media (min-width: 1025px) {
+  .dropdown-toggle {
+    display: none;
+  }
+}
+
+/* عند فتح القائمة، يدور السهم */
+.dropdown.open .dropdown-toggle {
+  transform: rotate(180deg);
+}
+
+/* ترتيب العنصر بجانب النص */
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-main-link {
+  flex: 1;
+}
+
+/* تحسين قائمة الموبايل */
+@media (max-width: 1024px) {
+  .dropdown-menu {
+    display: none;
+  }
+  .dropdown.open .dropdown-menu {
+    display: block;
+  }
+}
 /* ---------- تنسيق صفحة الأرشيف ---------- */
 .archive {
   text-align: right;
@@ -5417,6 +5386,7 @@ nav,
   display: none !important;
 }
 
+/* _sass/custom/_reader.scss */
 /* _sass/custom/_reader.scss */
 /* الأساس العام لقسم دفتر القراء */
 .cahier-readers {
@@ -5467,6 +5437,7 @@ nav,
   color: #a97b50;
 }
 
+/* منسدلة دفتر القراء */
 .readers-dropdown {
   position: relative;
   display: inline-block;
@@ -5504,6 +5475,45 @@ nav,
 .readers-dropdown .readers-dropbtn:focus + .readers-dropdown-content,
 .readers-dropdown .readers-dropbtn:active + .readers-dropdown-content {
   display: block;
+}
+
+/* 🌟 تخصيص صفحة سؤال الشهر */
+.cahier-question {
+  background-color: #fefcf8;
+  padding: 2rem 1rem;
+}
+.cahier-question h1, .cahier-question h2 {
+  color: #8a5c2d;
+  font-family: "Amiri", serif;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.cahier-question h1::before {
+  content: "❓";
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  color: #d49a3a;
+}
+.cahier-question .monthly-question {
+  background: #fffaf0;
+  border: 1px solid #f0e0c0;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.cahier-question .reader-answer {
+  background: #ffffff;
+  border: 1px solid #ece2d0;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+.cahier-question .reader-answer:hover {
+  background: #fff8ee;
 }
 
 html[lang=ar] {

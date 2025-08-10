@@ -95,13 +95,17 @@
 
     <nav class="site-nav">
       <ul class="nav-links"><li><a href="/hibr-shafaf/"><span class='icon-only-mobile'>🏠</span> الرئيسية  </a></li><li><a href="/hibr-shafaf/articles/"><span class='icon-only-mobile'>📂</span> المقالات </a></li><li><a href="/hibr-shafaf/thoughts/"><span class='icon-only-mobile'>🖋️</span> خواطر </a></li><li class="dropdown">
-              <a href="#" class="dropdown-toggle"><span class='icon-only-mobile'>📚</span> دفتر القراء</a>
+              <a href="/hibr-shafaf/cahier-des-lecteurs/" class="dropdown-main-link">
+                <span class='icon-only-mobile'>📚</span> دفتر القراء
+              </a>
+              <button class="dropdown-toggle" aria-label="فتح القائمة الفرعية">
+                ▼
+              </button>
               <ul class="dropdown-menu"><li><a href="/hibr-shafaf/messages-des-lecteurs/">💌 رسائل القراء</a></li><li><a href="/hibr-shafaf/espace-silencieux/">✍️ مساحة صامتة</a></li><li><a href="/hibr-shafaf/question-du-mois/">✨ سؤال الشهر</a></li></ul>
             </li><li><a href="/hibr-shafaf/life-stories/"><span class='icon-only-mobile'>📖</span> قصص من الحياة</a></li><li><a href="/hibr-shafaf/pause-detente/"><span class='icon-only-mobile'>🎈</span> مساحة الترفيه</a></li><li><a href="/hibr-shafaf/ressources-gratuites/"><span class='icon-only-mobile'>🎁</span> أدوات مجانيه</a></li><li><a href="/hibr-shafaf/about/"><span class='icon-only-mobile'>👤</span> عني</a></li></ul>
     </nav>
   </div>
 </header>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.nav-toggle');
@@ -114,18 +118,16 @@
       });
     }
 
-    // تفعيل القوائم الفرعية بالنقر (للهاتف)
-    document.querySelectorAll('.dropdown-toggle').forEach(item => {
-      item.addEventListener('click', function(event) {
-        if (window.innerWidth <= 1024) {
-          event.preventDefault();
-          this.parentElement.classList.toggle('open');
-        }
+    // فتح القوائم الفرعية بزر منفصل
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+      btn.addEventListener('click', function(event) {
+        event.preventDefault();
+        this.parentElement.classList.toggle('open');
       });
     });
 
-    // إغلاق قائمة الهاتف عند النقر على أي رابط
-    document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(link => {
+    // إغلاق القائمة عند النقر على رابط في الموبايل
+    document.querySelectorAll('.nav-links a:not(.dropdown-main-link)').forEach(link => {
       link.addEventListener('click', function() {
         if (window.innerWidth <= 1024) {
           navLinks.classList.remove('nav-open');
@@ -134,6 +136,7 @@
     });
   });
 </script>
+
 
     <div class="initial-content">
       
