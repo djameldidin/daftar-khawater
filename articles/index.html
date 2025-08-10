@@ -111,22 +111,22 @@
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    // فتح وإغلاق قائمة الهاتف
+    // فتح وإغلاق قائمة الهاتف الرئيسية
     if (navToggle) {
       navToggle.addEventListener('click', function() {
         navLinks.classList.toggle('nav-open');
       });
     }
 
-    // فتح القوائم الفرعية بزر منفصل
+    // فتح القوائم الفرعية بالنقر على الزر المخصص
     document.querySelectorAll('.dropdown-toggle').forEach(btn => {
       btn.addEventListener('click', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // يمنع أي سلوك افتراضي
         this.parentElement.classList.toggle('open');
       });
     });
 
-    // إغلاق القائمة عند النقر على رابط في الموبايل
+    // إغلاق قائمة الهاتف عند النقر على أي رابط (وليس على زر فتح القائمة)
     document.querySelectorAll('.nav-links a:not(.dropdown-main-link)').forEach(link => {
       link.addEventListener('click', function() {
         if (window.innerWidth <= 1024) {
@@ -136,7 +136,6 @@
     });
   });
 </script>
-
 
     <div class="initial-content">
       
