@@ -9,7 +9,12 @@
         {%- for link in site.data.navigation.main -%}
           {%- if link.children -%}
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle">{{ link.title }}</a>
+              <a href="{{ link.url | relative_url }}" class="dropdown-main-link">
+                {{ link.title }}
+              </a>
+              <button class="dropdown-toggle" aria-label="فتح القائمة الفرعية">
+                ▼
+              </button>
               <ul class="dropdown-menu">
                 {%- for child in link.children -%}
                   <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
@@ -24,7 +29,6 @@
     </nav>
   </div>
 </header>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const navToggle = document.querySelector('.nav-toggle');
@@ -37,18 +41,16 @@
       });
     }
 
-    // تفعيل القوائم الفرعية بالنقر (للهاتف)
-    document.querySelectorAll('.dropdown-toggle').forEach(item => {
-      item.addEventListener('click', function(event) {
-        if (window.innerWidth <= 1024) {
-          event.preventDefault();
-          this.parentElement.classList.toggle('open');
-        }
+    // فتح القوائم الفرعية بزر منفصل
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+      btn.addEventListener('click', function(event) {
+        event.preventDefault();
+        this.parentElement.classList.toggle('open');
       });
     });
 
-    // إغلاق قائمة الهاتف عند النقر على أي رابط
-    document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(link => {
+    // إغلاق القائمة عند النقر على رابط في الموبايل
+    document.querySelectorAll('.nav-links a:not(.dropdown-main-link)').forEach(link => {
       link.addEventListener('click', function() {
         if (window.innerWidth <= 1024) {
           navLinks.classList.remove('nav-open');

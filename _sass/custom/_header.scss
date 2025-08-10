@@ -143,3 +143,43 @@
     margin-top: 0.5rem;
   }
 }
+/* زر القائمة الفرعية */
+.dropdown-toggle {
+  background: none;
+  border: none;
+  padding: 0 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: inherit;
+  transition: transform 0.2s ease;
+  
+  /* إخفاء الزر في الشاشات الكبيرة */
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
+
+/* عند فتح القائمة، يدور السهم */
+.dropdown.open .dropdown-toggle {
+  transform: rotate(180deg);
+}
+
+/* ترتيب العنصر بجانب النص */
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-main-link {
+  flex: 1;
+}
+
+/* تحسين قائمة الموبايل */
+@media (max-width: 1024px) {
+  .dropdown-menu {
+    display: none;
+  }
+  .dropdown.open .dropdown-menu {
+    display: block;
+  }
+}
