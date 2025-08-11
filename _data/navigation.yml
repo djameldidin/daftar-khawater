@@ -9,10 +9,9 @@ main:
   url: "/thoughts/"
 
 - title: "<span class='icon-only-mobile'>📚</span> دفتر القراء"
-  url: "/cahier-des-lecteurs/"
   children: 
-    - title: "💌 رسائل القراء"
-      url: "/messages-des-lecteurs/"
+    - title: "🏠 صفحة الدفتر الرئيسية"
+      url: "/cahier-des-lecteurs/"
     - title: "✍️ مساحة صامتة"
       url: "/espace-silencieux/"
     - title: "✨ سؤال الشهر"
