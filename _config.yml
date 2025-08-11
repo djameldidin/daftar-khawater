@@ -47,9 +47,6 @@ collections:
   life_stories:
     output: true
     permalink: /life-stories/:path/
-  messages_des_lecteurs:
-    output: true
-    permalink: /messages-des-lecteurs/:title/
   espace_silencieux:
     output: true
     permalink: /espace-silencieux/:title/
